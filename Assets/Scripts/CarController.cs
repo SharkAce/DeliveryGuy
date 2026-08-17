@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class CarController : MonoBehaviour
@@ -12,7 +11,6 @@ public class CarController : MonoBehaviour
     [Header("Steering")]
     public float maxSteerAngle = 35f;
     public float steerSpeed = 5f;
-    public float steeringSpeedInfluence = 2f;
 
     private Rigidbody2D rb;
     private float driveInput;
