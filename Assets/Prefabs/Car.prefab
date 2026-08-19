@@ -633,6 +633,7 @@ MonoBehaviour:
   rearRight: {fileID: 1160578836688011363}
   maxSteerAngle: 35
   steerSpeed: 200
+  playerControlled: 0
 --- !u!210 &1160578838296392958
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -641,8 +642,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160578838296392957}
   m_Enabled: 1
-  m_SortingLayerID: 440105401
-  m_SortingLayer: 4
+  m_SortingLayerID: 370981121
+  m_SortingLayer: 5
   m_SortingOrder: 0
 --- !u!1 &1160578838309399019
 GameObject:
