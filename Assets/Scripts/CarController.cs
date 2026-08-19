@@ -20,6 +20,9 @@ public class CarController : MonoBehaviour
     private bool slideInput;
     private float steerAngle = 0f;
 
+    [Header("Settings")]
+    public bool playerControlled = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,14 +35,17 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        driveInput  = Input.GetKey(KeyCode.W) ? 1f : 0f;
-        brakeInput  = Input.GetKey(KeyCode.S) ? 1f : 0f;
-        
-        if (Input.GetKey(KeyCode.A)) steerInput = 1f;
-        else if (Input.GetKey(KeyCode.D)) steerInput = -1f;
-        else steerInput = 0f;
+        if (playerControlled)
+        {
+            driveInput  = Input.GetKey(KeyCode.W) ? 1f : 0f;
+            brakeInput  = Input.GetKey(KeyCode.S) ? 1f : 0f;
+            
+            if (Input.GetKey(KeyCode.A)) steerInput = 1f;
+            else if (Input.GetKey(KeyCode.D)) steerInput = -1f;
+            else steerInput = 0f;
 
-        slideInput = Input.GetKey(KeyCode.Space);
+            slideInput = Input.GetKey(KeyCode.Space);
+        }
 
         HandleSteering();
     }
