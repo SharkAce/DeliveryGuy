@@ -6,6 +6,10 @@ public class DeliveryRoute : MonoBehaviour
     [SerializeField] private DeliveryPoint pickupPoint;
     [SerializeField] private DeliveryPoint dropOffPoint;
 
+    [Header("Timing")]
+    [SerializeField] private bool timedDelivery = true;
+    [SerializeField] private float targetDeliveryTime = 60f;
+
     public DeliveryPoint PickupPoint
     {
         get { return pickupPoint; }
@@ -14,6 +18,16 @@ public class DeliveryRoute : MonoBehaviour
     public DeliveryPoint DropOffPoint
     {
         get { return dropOffPoint; }
+    }
+
+    public bool IsTimedDelivery
+    {
+        get { return timedDelivery; }
+    }
+
+    public float TargetDeliveryTime
+    {
+        get { return Mathf.Max(1f, targetDeliveryTime); }
     }
 
     public void Initialize(DeliveryManager manager)
