@@ -1,4 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+
+public enum DrivingRating
+{
+    Horrible,
+    Bad,
+    Average,
+    Good,
+    Excellent
+}
 
 public class DeliveryManager : MonoBehaviour
 {
@@ -28,12 +38,34 @@ public class DeliveryManager : MonoBehaviour
     [SerializeField] private float minimumCollisionPenalty = 2f;
     [SerializeField] private float maximumCollisionPenalty = 20f;
 
+    [Header("Driving Score")]
+    [SerializeField] private float startingDrivingScore = 100f;
+    [SerializeField] private float drivingPenaltyMultiplier = 1f;
+
+    [Header("Score Weights")]
+    [Range(0f, 1f)]
+    [SerializeField] private float timeWeight = 0.4f;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float foodQualityWeight = 0.3f;
+
+    [Range(0f, 1f)]
+    [SerializeField] private float drivingWeight = 0.3f;
+
     private int currentDeliveryIndex;
     private DeliveryState currentState;
 
     private float deliveryElapsedTime;
     private bool timerRunning;
     private float currentFoodQuality;
+    private float currentDrivingScore;
+
+    private float lastDeliveryTip;
+    private int lastDeliveryScore;
+    private int totalScore;
+
+    private readonly List<DeliveryResult> deliveryResults =
+        new List<DeliveryResult>();
 
     public int CurrentDeliveryNumber
     {
@@ -119,6 +151,59 @@ public class DeliveryManager : MonoBehaviour
         get { return currentFoodQuality; }
     }
 
+    public float CurrentDrivingScore
+    {
+        get { return currentDrivingScore; }
+    }
+
+    public float LastDeliveryTip
+    {
+        get { return lastDeliveryTip; }
+    }
+
+    public int LastDeliveryScore
+    {
+        get { return lastDeliveryScore; }
+    }
+
+    public int TotalScore
+    {
+        get { return totalScore; }
+    }
+
+    public DeliveryResult[] DeliveryResults
+    {
+        get { return deliveryResults.ToArray(); }
+    }
+
+    public DrivingRating CurrentDrivingRating
+    {
+        get
+        {
+            if (currentDrivingScore >= 90f)
+            {
+                return DrivingRating.Excellent;
+            }
+
+            if (currentDrivingScore >= 75f)
+            {
+                return DrivingRating.Good;
+            }
+
+            if (currentDrivingScore >= 50f)
+            {
+                return DrivingRating.Average;
+            }
+
+            if (currentDrivingScore >= 25f)
+            {
+                return DrivingRating.Bad;
+            }
+
+            return DrivingRating.Horrible;
+        }
+    }
+
     private DeliveryRoute CurrentDelivery
     {
         get { return deliveries[currentDeliveryIndex]; }
@@ -140,6 +225,9 @@ public class DeliveryManager : MonoBehaviour
         }
 
         currentDeliveryIndex = 0;
+        totalScore = 0;
+        deliveryResults.Clear();
+
         BeginCurrentDelivery();
     }
 
@@ -175,6 +263,12 @@ public class DeliveryManager : MonoBehaviour
 
         currentFoodQuality = Mathf.Clamp(
             startingFoodQuality,
+            0f,
+            100f
+        );
+
+        currentDrivingScore = Mathf.Clamp(
+            startingDrivingScore,
             0f,
             100f
         );
@@ -242,6 +336,9 @@ public class DeliveryManager : MonoBehaviour
         float completionQuality = currentFoodQuality;
         bool wasTimed = CurrentDelivery.IsTimedDelivery;
 
+        CalculateDeliveryRewards();
+        StoreDeliveryResult();
+
         CurrentDelivery.Hide();
         currentDeliveryIndex++;
 
@@ -261,13 +358,103 @@ public class DeliveryManager : MonoBehaviour
 
             if (phoneUI != null)
             {
-                phoneUI.ShowCompleted(completionTime, completionQuality, wasTimed);
+                phoneUI.ShowCompleted(
+                    completionTime,
+                    completionQuality,
+                    wasTimed,
+                    totalScore
+                );
             }
 
             return;
         }
 
         BeginCurrentDelivery();
+    }
+
+    private void StoreDeliveryResult()
+    {
+        float targetTime = CurrentDelivery.IsTimedDelivery
+            ? CurrentDelivery.TargetDeliveryTime
+            : 0f;
+
+        DeliveryResult result = new DeliveryResult(
+            CurrentDeliveryNumber,
+            deliveryElapsedTime,
+            targetTime,
+            currentFoodQuality,
+            currentDrivingScore,
+            CurrentDrivingRating,
+            lastDeliveryTip,
+            lastDeliveryScore,
+            totalScore
+        );
+
+        deliveryResults.Add(result);
+    }
+
+    private void CalculateDeliveryRewards()
+    {
+        float timeMultiplier = 1f;
+
+        if (CurrentDelivery.IsTimedDelivery)
+        {
+            float safeElapsedTime = Mathf.Max(
+                0.1f,
+                deliveryElapsedTime
+            );
+
+            timeMultiplier = Mathf.Clamp(
+                CurrentDelivery.TargetDeliveryTime /
+                safeElapsedTime,
+                0.25f,
+                1.25f
+            );
+        }
+
+        float foodMultiplier =
+            Mathf.Clamp01(currentFoodQuality / 100f);
+
+        float drivingMultiplier =
+            Mathf.Clamp01(currentDrivingScore / 100f);
+
+        lastDeliveryTip =
+            CurrentDelivery.BaseTip *
+            timeMultiplier *
+            foodMultiplier *
+            drivingMultiplier;
+
+        lastDeliveryTip = Mathf.Max(
+            0f,
+            lastDeliveryTip
+        );
+
+        float totalWeight =
+            timeWeight +
+            foodQualityWeight +
+            drivingWeight;
+
+        if (totalWeight <= 0f)
+        {
+            totalWeight = 1f;
+        }
+
+        float performance =
+            (
+                timeMultiplier * timeWeight +
+                foodMultiplier * foodQualityWeight +
+                drivingMultiplier * drivingWeight
+            ) / totalWeight;
+
+        lastDeliveryScore = Mathf.Max(
+            0,
+            Mathf.RoundToInt(
+                CurrentDelivery.BaseScore *
+                performance
+            )
+        );
+
+        totalScore += lastDeliveryScore;
     }
 
     public void ReportCollision(float impactSpeed)
@@ -277,15 +464,23 @@ public class DeliveryManager : MonoBehaviour
             return;
         }
 
-        float penalty = Mathf.Clamp(
+        float foodPenalty = Mathf.Clamp(
             impactSpeed * penaltyPerImpactSpeed,
             minimumCollisionPenalty,
             maximumCollisionPenalty
         );
 
+        float drivingPenalty =
+            foodPenalty * drivingPenaltyMultiplier;
+
         currentFoodQuality = Mathf.Max(
             0f,
-            currentFoodQuality - penalty
+            currentFoodQuality - foodPenalty
+        );
+
+        currentDrivingScore = Mathf.Max(
+            0f,
+            currentDrivingScore - drivingPenalty
         );
     }
 

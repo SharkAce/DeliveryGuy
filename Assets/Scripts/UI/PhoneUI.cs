@@ -48,9 +48,15 @@ public class PhoneUI : MonoBehaviour
         }
     }
 
-    public void ShowCompleted(float deliveryTime, float foodQuality, bool wasTimed)
+    public void ShowCompleted(
+        float deliveryTime,
+        float foodQuality,
+        bool wasTimed,
+        int totalScore)
     {
-        orderText.text = "That's the last one. Good work today.";
+        orderText.text =
+            "That's the last one. Good work today." +
+            "\n\nFinal score: " + totalScore;
 
         if (wasTimed)
         {
