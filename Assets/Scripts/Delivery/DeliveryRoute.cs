@@ -2,9 +2,23 @@
 
 public class DeliveryRoute : MonoBehaviour
 {
+    [Header("Order Information")]
+    [SerializeField] private string pickupName = "Restaurant";
+    [SerializeField] private string destinationName = "Customer";
+
     [Header("Route Points")]
     [SerializeField] private DeliveryPoint pickupPoint;
     [SerializeField] private DeliveryPoint dropOffPoint;
+
+    public string PickupName
+    {
+        get { return pickupName; }
+    }
+
+    public string DestinationName
+    {
+        get { return destinationName; }
+    }
 
     public DeliveryPoint PickupPoint
     {

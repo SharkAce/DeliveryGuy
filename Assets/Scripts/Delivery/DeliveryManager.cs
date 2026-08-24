@@ -12,6 +12,12 @@ public class DeliveryManager : MonoBehaviour
     [Header("Deliveries in Order")]
     [SerializeField] private DeliveryRoute[] deliveries;
 
+    [Header("Navigation")]
+    [SerializeField] private ObjectiveArrow objectiveArrow;
+
+    [Header("UI")]
+    [SerializeField] private PhoneUI phoneUI;
+
     private int currentDeliveryIndex;
     private DeliveryState currentState;
 
@@ -57,10 +63,21 @@ public class DeliveryManager : MonoBehaviour
         currentState = DeliveryState.WaitingForPickup;
         CurrentDelivery.ShowPickup();
 
-        Debug.Log(
-            "Delivery " + (currentDeliveryIndex + 1) +
-            ": collect the package."
-        );
+        if (objectiveArrow != null)
+        {
+            objectiveArrow.SetTarget(
+                CurrentDelivery.PickupPoint.transform
+            );
+        }
+
+        if (phoneUI != null)
+        {
+            phoneUI.ShowPickup(
+                currentDeliveryIndex + 1,
+                deliveries.Length,
+                CurrentDelivery
+            );
+        }
     }
 
     private void CollectPackage()
@@ -68,7 +85,21 @@ public class DeliveryManager : MonoBehaviour
         currentState = DeliveryState.CarryingPackage;
         CurrentDelivery.ShowDropOff();
 
-        Debug.Log("Package collected! Drive to the delivery point.");
+        if (objectiveArrow != null)
+        {
+            objectiveArrow.SetTarget(
+                CurrentDelivery.DropOffPoint.transform
+            );
+        }
+
+        if (phoneUI != null)
+        {
+            phoneUI.ShowDropOff(
+                currentDeliveryIndex + 1,
+                deliveries.Length,
+                CurrentDelivery
+            );
+        }
     }
 
     private void CompleteCurrentDelivery()
@@ -79,11 +110,20 @@ public class DeliveryManager : MonoBehaviour
         if (currentDeliveryIndex >= deliveries.Length)
         {
             currentState = DeliveryState.Completed;
-            Debug.Log("All deliveries completed!");
+
+            if (objectiveArrow != null)
+            {
+                objectiveArrow.ClearTarget();
+            }
+
+            if (phoneUI != null)
+            {
+                phoneUI.ShowCompleted();
+            }
+
             return;
         }
 
-        Debug.Log("Delivery completed!");
         BeginCurrentDelivery();
     }
 }
