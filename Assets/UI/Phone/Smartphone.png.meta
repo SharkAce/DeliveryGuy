@@ -1,0 +1,1940 @@
+fileFormatVersion: 2
+guid: fe0275f68e9bbb34e87e445a9e7d885f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6278474548628967053
+    second: Smartphone_0
+  - first:
+      213: 1287003105972107641
+    second: Smartphone_1
+  - first:
+      213: -9135693300961900939
+    second: Smartphone_2
+  - first:
+      213: 3765714869177407674
+    second: Smartphone_3
+  - first:
+      213: 4621639472763115230
+    second: Smartphone_4
+  - first:
+      213: 2411944437537712519
+    second: Smartphone_5
+  - first:
+      213: -4117687044610377784
+    second: Smartphone_6
+  - first:
+      213: -6156657771584419979
+    second: Smartphone_7
+  - first:
+      213: -1668962236501261857
+    second: Smartphone_8
+  - first:
+      213: -1211532999331767601
+    second: Smartphone_9
+  - first:
+      213: -5989456976693232122
+    second: Smartphone_10
+  - first:
+      213: -699781488708217095
+    second: Smartphone_11
+  - first:
+      213: -3748521335266813963
+    second: Smartphone_12
+  - first:
+      213: -1523747638493380180
+    second: Smartphone_13
+  - first:
+      213: -7681092283012576298
+    second: Smartphone_14
+  - first:
+      213: -5595348859623363968
+    second: Smartphone_15
+  - first:
+      213: -2967181268198000150
+    second: Smartphone_16
+  - first:
+      213: -2207517355551496556
+    second: Smartphone_17
+  - first:
+      213: 8778905148485770760
+    second: Smartphone_18
+  - first:
+      213: -5966730979891987032
+    second: Smartphone_19
+  - first:
+      213: 411149662804551909
+    second: Smartphone_20
+  - first:
+      213: -7110176670190478929
+    second: Smartphone_21
+  - first:
+      213: -8897667604819332301
+    second: Smartphone_22
+  - first:
+      213: -6534055081419804474
+    second: Smartphone_23
+  - first:
+      213: 3925871817978581987
+    second: Smartphone_24
+  - first:
+      213: 8969771365637851739
+    second: Smartphone_25
+  - first:
+      213: 6116358444709123514
+    second: Smartphone_26
+  - first:
+      213: -4186045166271625387
+    second: Smartphone_27
+  - first:
+      213: 4880541989885782271
+    second: Smartphone_28
+  - first:
+      213: -1839845444322966861
+    second: Smartphone_29
+  - first:
+      213: -212742412198427854
+    second: Smartphone_30
+  - first:
+      213: -1715232636877877832
+    second: Smartphone_31
+  - first:
+      213: -2955217085987523565
+    second: Smartphone_32
+  - first:
+      213: -5851308225425224673
+    second: Smartphone_33
+  - first:
+      213: 5781051319428730991
+    second: Smartphone_34
+  - first:
+      213: 798888992969107891
+    second: Smartphone_35
+  - first:
+      213: -8146435380399145105
+    second: Smartphone_36
+  - first:
+      213: 6921126962241928210
+    second: Smartphone_37
+  - first:
+      213: 6423275434721098471
+    second: Smartphone_38
+  - first:
+      213: -4667304935506162733
+    second: Smartphone_39
+  - first:
+      213: -7243733603376972577
+    second: Smartphone_40
+  - first:
+      213: -7621356281901225452
+    second: Smartphone_41
+  - first:
+      213: -3385175278361256223
+    second: Smartphone_42
+  - first:
+      213: 3489515775274178332
+    second: Smartphone_43
+  - first:
+      213: 4571476822240716236
+    second: Smartphone_44
+  - first:
+      213: 5964138178364104353
+    second: Smartphone_45
+  - first:
+      213: -6316962605102650509
+    second: Smartphone_46
+  - first:
+      213: -315505706007313888
+    second: Smartphone_47
+  - first:
+      213: 9079213157436403131
+    second: Smartphone_48
+  - first:
+      213: 629964392510760812
+    second: Smartphone_49
+  - first:
+      213: -3045574393287654039
+    second: Smartphone_50
+  - first:
+      213: -4018883858148757973
+    second: Smartphone_51
+  - first:
+      213: 6749992419648577346
+    second: Smartphone_52
+  - first:
+      213: 5788423327196940048
+    second: Smartphone_53
+  - first:
+      213: -2850959251956144405
+    second: Smartphone_54
+  - first:
+      213: 9156674219972905717
+    second: Smartphone_55
+  - first:
+      213: 5566051735093552368
+    second: Smartphone_56
+  - first:
+      213: -6233546884759184732
+    second: Smartphone_57
+  - first:
+      213: 137027497946890162
+    second: Smartphone_58
+  - first:
+      213: -8678881618557244183
+    second: Smartphone_59
+  - first:
+      213: -4557137020274987753
+    second: Smartphone_60
+  - first:
+      213: -2154997549765893059
+    second: Smartphone_61
+  - first:
+      213: -7292510872228023140
+    second: Smartphone_62
+  - first:
+      213: 3586092811697428620
+    second: Smartphone_63
+  - first:
+      213: 5591088842751500975
+    second: Smartphone_64
+  - first:
+      213: -5573934647100289193
+    second: Smartphone_65
+  - first:
+      213: 6524016673228174646
+    second: Smartphone_66
+  - first:
+      213: -1858076399380082236
+    second: Smartphone_67
+  - first:
+      213: -5775926374416954092
+    second: Smartphone_68
+  - first:
+      213: 5369721609370608503
+    second: Smartphone_69
+  - first:
+      213: -5108381724429811800
+    second: Smartphone_72
+  - first:
+      213: 2434961624096446844
+    second: Smartphone_73
+  - first:
+      213: 4413543033288236305
+    second: Smartphone_78
+  - first:
+      213: 6328154689884324270
+    second: Smartphone_79
+  - first:
+      213: 8509880976380379401
+    second: Smartphone_70
+  - first:
+      213: 5632985623316161414
+    second: Smartphone_71
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Smartphone_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 448
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e4c52565f912750800000000000000
+      internalID: 6278474548628967053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_1
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 448
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 979ba4c818a5cd110800000000000000
+      internalID: 1287003105972107641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 448
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5760043885f773180800000000000000
+      internalID: -9135693300961900939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_3
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 448
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8d9bec8b1824430800000000000000
+      internalID: 3765714869177407674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_4
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 448
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed618fd2d9c532040800000000000000
+      internalID: 4621639472763115230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 448
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7892a69dfa2f87120800000000000000
+      internalID: 2411944437537712519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 448
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c735c903790bd6c0800000000000000
+      internalID: -4117687044610377784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_7
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 448
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577001940682f8aa0800000000000000
+      internalID: -6156657771584419979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd10dcd30b7a6d8e0800000000000000
+      internalID: -1668962236501261857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_9
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 432
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fca9a25f725cf2fe0800000000000000
+      internalID: -1211532999331767601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 432
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60ef6bafc9c21eca0800000000000000
+      internalID: -5989456976693232122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 432
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f617219170e946f0800000000000000
+      internalID: -699781488708217095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 432
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7d272c4b39afbc0800000000000000
+      internalID: -3748521335266813963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_13
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 432
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca10340989f8adae0800000000000000
+      internalID: -1523747638493380180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 432
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6db8a08c347476590800000000000000
+      internalID: -7681092283012576298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_15
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 432
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08a23cb8bd35952b0800000000000000
+      internalID: -5595348859623363968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 416
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae97ddc7b5472d6d0800000000000000
+      internalID: -2967181268198000150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_17
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 416
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 496e7da39a25d51e0800000000000000
+      internalID: -2207517355551496556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 416
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80e975c48bfe4d970800000000000000
+      internalID: 8778905148485770760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_19
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 416
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ad383179c9e13da0800000000000000
+      internalID: -5966730979891987032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_20
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 416
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e8acf0a072b4b500800000000000000
+      internalID: 411149662804551909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_21
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 416
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa9d6036df3935d90800000000000000
+      internalID: -7110176670190478929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_22
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 416
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3333e3d8472258480800000000000000
+      internalID: -8897667604819332301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_23
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 416
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0f229b58f5255a0800000000000000
+      internalID: -6534055081419804474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 400
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e394584e9f7b7630800000000000000
+      internalID: 3925871817978581987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_25
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 400
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5a805d78870b7c70800000000000000
+      internalID: 8969771365637851739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_26
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 400
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab519df799ba1e450800000000000000
+      internalID: 6116358444709123514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_27
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 400
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55783a2991e28e5c0800000000000000
+      internalID: -4186045166271625387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_28
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 400
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff82582e41b2bb340800000000000000
+      internalID: 4880541989885782271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_29
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 400
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b24289f05e8776e0800000000000000
+      internalID: -1839845444322966861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_30
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 400
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 233c04c37ef2c0df0800000000000000
+      internalID: -212742412198427854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_31
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 400
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdccb321054238e0800000000000000
+      internalID: -1715232636877877832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_32
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 400
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3147c8bb7b5fcf6d0800000000000000
+      internalID: -2955217085987523565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_33
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 400
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c4538ab2afbcea0800000000000000
+      internalID: -5851308225425224673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f605ad2bb8b6a3050800000000000000
+      internalID: 5781051319428730991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_35
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 384
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b9a4e07e49361b00800000000000000
+      internalID: 798888992969107891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_36
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 384
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f72a5ee2c02fe80800000000000000
+      internalID: -8146435380399145105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_37
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 384
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21cfecd6d48cc0060800000000000000
+      internalID: 6921126962241928210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_38
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 384
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ea3b05d9fe042950800000000000000
+      internalID: 6423275434721098471
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_39
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 384
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db4abcb3e66a3fb0800000000000000
+      internalID: -4667304935506162733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_40
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 384
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdcb72baaa6197b90800000000000000
+      internalID: -7243733603376972577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_41
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 384
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ae59e57d08b3690800000000000000
+      internalID: -7621356281901225452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_42
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1eed7de05017501d0800000000000000
+      internalID: -3385175278361256223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_43
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 384
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c17d65ffb104d6030800000000000000
+      internalID: 3489515775274178332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_44
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 368
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc5e698f2f5217f30800000000000000
+      internalID: 4571476822240716236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_45
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 368
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aedcb8e210e4c250800000000000000
+      internalID: 5964138178364104353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_46
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 368
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37b2e67baf3a558a0800000000000000
+      internalID: -6316962605102650509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_47
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 368
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02243d46b391f9bf0800000000000000
+      internalID: -315505706007313888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_48
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 368
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbdac015348dffd70800000000000000
+      internalID: 9079213157436403131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_49
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 368
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c67afbcf6451eb800800000000000000
+      internalID: 629964392510760812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_50
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 368
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9654017b932fbb5d0800000000000000
+      internalID: -3045574393287654039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_51
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 368
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2eed798c6e0a38c0800000000000000
+      internalID: -4018883858148757973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_52
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 368
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24f9bb9b75accad50800000000000000
+      internalID: 6749992419648577346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_53
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 368
+        width: 41
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0178823095c945050800000000000000
+      internalID: 5788423327196940048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_54
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 352
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be66a065aab5f68d0800000000000000
+      internalID: -2850959251956144405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_55
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 352
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fa467d50ba031f70800000000000000
+      internalID: 9156674219972905717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_56
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 352
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4a2b710969e3d40800000000000000
+      internalID: 5566051735093552368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_57
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 352
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aa9f23922efd79a0800000000000000
+      internalID: -6233546884759184732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_58
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 352
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bfb59b88c1d6e100800000000000000
+      internalID: 137027497946890162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_59
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 352
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ec6a3e862b6e8780800000000000000
+      internalID: -8678881618557244183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_60
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 352
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d2ab9560cc1c0c0800000000000000
+      internalID: -4557137020274987753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_61
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 352
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d34ed5a6529e712e0800000000000000
+      internalID: -2154997549765893059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_62
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 336
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94bc24cffbcbca90800000000000000
+      internalID: -7292510872228023140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_63
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 336
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c889ecc896c54c130800000000000000
+      internalID: 3586092811697428620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_64
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 336
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa26adbfda9879d40800000000000000
+      internalID: 5591088842751500975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_65
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 336
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75f485e68f765a2b0800000000000000
+      internalID: -5573934647100289193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_66
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 336
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 635bd7c3996f98a50800000000000000
+      internalID: 6524016673228174646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_67
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 336
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c1d969fb59c636e0800000000000000
+      internalID: -1858076399380082236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_68
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 336
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d411c8099c7dfa0800000000000000
+      internalID: -5775926374416954092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_69
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 336
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 773264d8a55158a40800000000000000
+      internalID: 5369721609370608503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_72
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 240
+        width: 47
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af734213e16b19b0800000000000000
+      internalID: -5108381724429811800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_73
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 240
+        width: 47
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c791af532b8bac120800000000000000
+      internalID: 2434961624096446844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_78
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 79
+        width: 47
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d9b0c310e004d30800000000000000
+      internalID: 4413543033288236305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_79
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 79
+        width: 47
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea10746992f12d750800000000000000
+      internalID: 6328154689884324270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_70
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 47
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 901c10629ab291670800000000000000
+      internalID: 8509880976380379401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Smartphone_71
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 47
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68364ae54926c2e40800000000000000
+      internalID: 5632985623316161414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
