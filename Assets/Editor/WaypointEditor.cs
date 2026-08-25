@@ -39,6 +39,7 @@ public class WaypointEditor : EditorWindow
     
     private void HandleWaypointClick()
     {
+        
         if (Selection.activeGameObject == null) return;
         
         WaypointController waypoint = Selection.activeGameObject.GetComponent<WaypointController>();
@@ -109,9 +110,8 @@ public class WaypointEditor : EditorWindow
         {
             Vector3 pos = wp.transform.position;
             pos.x = Mathf.Round(pos.x / gridSize) * gridSize;
-            pos.z = Mathf.Round(pos.z / gridSize) * gridSize;
+            pos.y = Mathf.Round(pos.y / gridSize) * gridSize;
             wp.transform.position = pos;
-            wp.transform.localScale = new Vector3(0, 0, 0);
         }
         Debug.Log($"Snapped {waypoints.Length} waypoints to grid");
     }

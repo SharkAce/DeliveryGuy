@@ -4,9 +4,8 @@ using UnityEngine;
 
 public enum WaypointType
 {
-    Building,
-    Parking,
-    Intersection
+    WalkingIntersection,
+    DrivingIntersection
 }
 
 public class WaypointController : MonoBehaviour
@@ -19,17 +18,13 @@ public class WaypointController : MonoBehaviour
     {
         switch (type)
         {
-            case WaypointType.Building:
+            case WaypointType.WalkingIntersection:
                 Gizmos.color = Color.blue;
                 break;
-            case WaypointType.Parking:
+            case WaypointType.DrivingIntersection:
                 Gizmos.color = Color.red;
                 break;
-            case WaypointType.Intersection:
-                Gizmos.color = Color.yellow;
-                break;
         }
-        
         Gizmos.DrawSphere(transform.position, 0.1f);
         
         Gizmos.color = Color.green;
