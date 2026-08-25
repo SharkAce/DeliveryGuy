@@ -90842,19 +90842,17 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'W / S
 
-    Accelerate and reverse
+    Accelerate and break/reverse
 
-    
 
     A / D
 
     Steer
 
-    
 
     SPACE
 
-    Brake
+    Handbreak
 
 
     E
@@ -90862,10 +90860,8 @@ MonoBehaviour:
     Collect
     / Drop off packages
 
-    
 
-    Follow the arrow to the collection and drop off
-    points.'
+    Follow the arrow to the collection and drop off points.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 79a3dcc33a2b84f468e6c930e60110ff, type: 2}
   m_sharedMaterial: {fileID: 7234715800338111892, guid: 79a3dcc33a2b84f468e6c930e60110ff,
@@ -93323,7 +93319,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -93342,7 +93338,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: f816e8b492953f649b06317e3bd9db34, type: 2}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
