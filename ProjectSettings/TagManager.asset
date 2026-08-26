@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Minimap
   - 
   - 
   - 
@@ -55,4 +55,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 2118851161
+    locked: 0
+  - name: Minimap
+    uniqueID: 3938754349
     locked: 0

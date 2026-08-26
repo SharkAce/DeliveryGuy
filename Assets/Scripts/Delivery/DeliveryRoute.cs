@@ -23,6 +23,11 @@ public class DeliveryRoute : MonoBehaviour
         get { return destinationName; }
     }
 
+    public string BossLine
+    {
+        get { return bossLine; }
+    }
+
     public DeliveryPoint PickupPoint
     {
         get { return pickupPoint; }
