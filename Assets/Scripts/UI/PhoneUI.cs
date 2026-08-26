@@ -18,6 +18,11 @@ public class PhoneUI : MonoBehaviour
             ". It's going to " +
             route.DestinationName +
             ".";
+
+        if (!string.IsNullOrEmpty(route.BossLine))
+        {
+            orderText.text += "\n\n" + route.BossLine;
+        }
     }
 
     public void ShowDropOff(

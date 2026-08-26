@@ -10,6 +10,9 @@ public class DeliveryRoute : MonoBehaviour
     [SerializeField] private DeliveryPoint pickupPoint;
     [SerializeField] private DeliveryPoint dropOffPoint;
 
+    [Header("Boss Dialogue")]
+    [SerializeField] [TextArea] private string bossLine = "";
+
     public string PickupName
     {
         get { return pickupName; }
