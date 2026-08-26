@@ -15,6 +15,10 @@ public class DeliveryManager : MonoBehaviour
     [Header("Navigation")]
     [SerializeField] private ObjectiveArrow objectiveArrow;
 
+    [Header("Minimap")]
+    [SerializeField]
+    private MinimapDeliveryMarkers minimapMarkers;
+
     [Header("UI")]
     [SerializeField] private PhoneUI phoneUI;
 
@@ -63,6 +67,11 @@ public class DeliveryManager : MonoBehaviour
         currentState = DeliveryState.WaitingForPickup;
         CurrentDelivery.ShowPickup();
 
+        if (minimapMarkers != null)
+        {
+            minimapMarkers.ShowPickup(currentDeliveryIndex);
+        }
+
         if (objectiveArrow != null)
         {
             objectiveArrow.SetTarget(
@@ -84,6 +93,11 @@ public class DeliveryManager : MonoBehaviour
     {
         currentState = DeliveryState.CarryingPackage;
         CurrentDelivery.ShowDropOff();
+
+        if (minimapMarkers != null)
+        {
+            minimapMarkers.ShowDropOff(currentDeliveryIndex);
+        }
 
         if (objectiveArrow != null)
         {
@@ -114,6 +128,11 @@ public class DeliveryManager : MonoBehaviour
             if (objectiveArrow != null)
             {
                 objectiveArrow.ClearTarget();
+            }
+
+            if (minimapMarkers != null)
+            {
+                minimapMarkers.HideAll();
             }
 
             if (phoneUI != null)
