@@ -483,6 +483,7 @@ MonoBehaviour:
   rearRight: {fileID: 1685048183}
   maxSteerAngle: 35
   steerSpeed: 200
+  reversePower: 0.65
 --- !u!255 &78790639
 FixedJoint2D:
   m_ObjectHideFlags: 0
@@ -1774,6 +1775,15 @@ MonoBehaviour:
   objectiveArrow: {fileID: 1167773796}
   minimapMarkers: {fileID: 955262548}
   phoneUI: {fileID: 552778261}
+  startingFoodQuality: 100
+  penaltyPerImpactSpeed: 2
+  minimumCollisionPenalty: 2
+  maximumCollisionPenalty: 20
+  startingDrivingScore: 100
+  drivingPenaltyMultiplier: 1
+  timeWeight: 0.4
+  foodQualityWeight: 0.3
+  drivingWeight: 0.3
 --- !u!4 &390628120
 Transform:
   m_ObjectHideFlags: 0
@@ -176192,8 +176202,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 34.3}
-  m_SizeDelta: {x: 160, y: 114.59569}
+  m_AnchoredPosition: {x: 0, y: 5}
+  m_SizeDelta: {x: 160, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1633192815
 MonoBehaviour:
