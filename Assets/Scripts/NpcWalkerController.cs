@@ -43,7 +43,7 @@ public class NpcWalkerController : MonoBehaviour
 
         if (currentWaypoint.transform.position == transform.position) SelectNextWaypoint();
 
-        transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.transform.position, moveSpeed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, currentWaypoint.transform.position, moveSpeed * Time.deltaTime);
     }
 
     void SelectNextWaypoint()
