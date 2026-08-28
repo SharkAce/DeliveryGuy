@@ -1,0 +1,69 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class NpcCarControls : MonoBehaviour
+{
+    [SerializeField] private float maxAISpeed = 10f;
+    [SerializeField] private WaypointController currentWaypoint = null;
+    [SerializeField] private WaypointController previousWaypoint = null;
+    [SerializeField] private float waypointTriggerDist = 1f;
+    private float currentSpeed = 0;
+    private CarController.Controls controls = new CarController.Controls();
+    private CarController car;
+
+    void Start()
+    {
+        car = GetComponent<CarController>();
+        controls.driveInput = 0f;
+        controls.brakeInput = 0f;
+        controls.steerInput = 0f;
+        controls.slideInput = false;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        currentSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
+        ApplyControls();
+    }
+    public void Init(WaypointController startWp, WaypointController previousWp)
+    {
+        if (startWp == null || previousWp == null) return;
+        currentWaypoint = startWp;
+        previousWaypoint = previousWp;
+
+        // Select a random point between the two waypoints
+        transform.position = Vector3.Lerp(startWp.transform.position, previousWp.transform.position, Random.value);
+    }
+    void ApplyControls()
+    {
+        Vector3 directionToWaypoint = (currentWaypoint.transform.position - transform.position).normalized;
+        float dot = Vector2.Dot(transform.up, directionToWaypoint);
+        float cross = Vector3.Cross(transform.up, directionToWaypoint).z;
+
+        float targetSpeed = maxAISpeed * dot;
+
+        controls.driveInput = currentSpeed < targetSpeed ? 1f : 0f;
+        controls.brakeInput = currentSpeed > targetSpeed ? 0f : 1f;
+        controls.steerInput = cross;
+
+        car.ApplyControls(controls);
+
+        if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < waypointTriggerDist) 
+            SelectAINextWaypoint();
+    }
+
+    void SelectAINextWaypoint()
+    {
+        foreach (WaypointController wp in currentWaypoint.nextWaypoints)
+        {
+            if (wp != currentWaypoint && wp != previousWaypoint)
+            {
+                previousWaypoint = currentWaypoint;
+                currentWaypoint = wp;
+                break;
+            }
+        }
+    }
+}

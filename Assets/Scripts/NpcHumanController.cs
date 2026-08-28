@@ -10,7 +10,7 @@ public enum Direction
     Down
 }
 
-public class NpcWalkerController : MonoBehaviour
+public class NpcHumanController : MonoBehaviour
 {
 
     [SerializeField] private WaypointController currentWaypoint = null;
