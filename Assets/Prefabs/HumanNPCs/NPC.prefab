@@ -104,10 +104,14 @@ MonoBehaviour:
   - {fileID: -4438819038524269751, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
   leftWalk:
   - {fileID: 3987867126497332379, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
+  - {fileID: -4548135043188383039, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
   - {fileID: 2872479023709303907, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
+  - {fileID: -4548135043188383039, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
   rightWalk:
   - {fileID: 2095236554418103998, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
+  - {fileID: -4718983959908198339, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
   - {fileID: -6411613890792928761, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
+  - {fileID: -4718983959908198339, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
   downWalk:
   - {fileID: -3134822779317829788, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
   - {fileID: 6350603094957436956, guid: 5fe43ab8c765bb4498dbfc0af6c322ff, type: 3}
