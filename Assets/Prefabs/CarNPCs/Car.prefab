@@ -638,6 +638,7 @@ GameObject:
   - component: {fileID: 5871171109264843175}
   - component: {fileID: 5871171109264843174}
   - component: {fileID: 5871171109264843173}
+  - component: {fileID: -1942240965402914655}
   m_Layer: 8
   m_Name: Car
   m_TagString: Untagged
@@ -730,11 +731,6 @@ MonoBehaviour:
   rearRight: {fileID: 5871171108443123499}
   maxSteerAngle: 35
   steerSpeed: 150
-  maxAISpeed: 10
-  playerControlled: 0
-  currentWaypoint: {fileID: 0}
-  previousWaypoint: {fileID: 0}
-  waypointTriggerDist: 1
 --- !u!210 &5871171109264843174
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -764,6 +760,22 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!114 &-1942240965402914655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5871171109264843195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3e5301f6ddc3b4690b9eaa5c5e90fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAISpeed: 4
+  currentWaypoint: {fileID: 0}
+  previousWaypoint: {fileID: 0}
+  waypointTriggerDist: 1
 --- !u!1 &5871171109494502110
 GameObject:
   m_ObjectHideFlags: 0
