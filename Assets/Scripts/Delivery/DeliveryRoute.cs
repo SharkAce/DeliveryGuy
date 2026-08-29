@@ -13,6 +13,14 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Boss Dialogue")]
     [SerializeField] [TextArea] private string bossLine = "";
 
+    [Header("Timing")]
+    [SerializeField] private bool timedDelivery = true;
+    [SerializeField] private float targetDeliveryTime = 60f;
+
+    [Header("Rewards")]
+    [SerializeField] private float baseTip = 20f;
+    [SerializeField] private int baseScore = 1000;
+
     public string PickupName
     {
         get { return pickupName; }
@@ -36,6 +44,26 @@ public class DeliveryRoute : MonoBehaviour
     public DeliveryPoint DropOffPoint
     {
         get { return dropOffPoint; }
+    }
+
+    public bool IsTimedDelivery
+    {
+        get { return timedDelivery; }
+    }
+
+    public float TargetDeliveryTime
+    {
+        get { return Mathf.Max(1f, targetDeliveryTime); }
+    }
+
+    public float BaseTip
+    {
+        get { return Mathf.Max(0f, baseTip); }
+    }
+
+    public int BaseScore
+    {
+        get { return Mathf.Max(0, baseScore); }
     }
 
     public void Initialize(DeliveryManager manager)
