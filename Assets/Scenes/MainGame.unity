@@ -377,9 +377,10 @@ GameObject:
   - component: {fileID: 78790635}
   - component: {fileID: 78790637}
   - component: {fileID: 78790636}
-  - component: {fileID: 78790638}
   - component: {fileID: 78790634}
   - component: {fileID: 78790639}
+  - component: {fileID: 78790640}
+  - component: {fileID: 78790638}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -474,15 +475,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 78790633}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2aef36af5299d42b76d0fe861ee6ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 9138168ff8c25634f948e76fa30b42fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frontLeft: {fileID: 496901074}
-  frontRight: {fileID: 298509690}
-  rearLeft: {fileID: 93037313}
-  rearRight: {fileID: 1685048183}
-  maxSteerAngle: 35
-  steerSpeed: 200
   reversePower: 0.65
 --- !u!255 &78790639
 FixedJoint2D:
@@ -502,6 +497,24 @@ FixedJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_DampingRatio: 0
   m_Frequency: 0
+--- !u!114 &78790640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78790633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb50bac55e0ad149a37a1d81f932b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontLeft: {fileID: 496901074}
+  frontRight: {fileID: 298509690}
+  rearLeft: {fileID: 93037313}
+  rearRight: {fileID: 1685048183}
+  maxSteerAngle: 35
+  steerSpeed: 200
 --- !u!1 &93037311
 GameObject:
   m_ObjectHideFlags: 0

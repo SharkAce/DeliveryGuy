@@ -31,6 +31,11 @@ public class NpcCarControls : MonoBehaviour
     {
         currentSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
         ApplyControls();
+        
+        if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < waypointTriggerDist)
+        {
+            SelectNextWaypoint();
+        }
     }
     public void Init(WaypointController startWp, WaypointController previousWp)
     {
@@ -68,9 +73,6 @@ public class NpcCarControls : MonoBehaviour
         controls.steerInput = Mathf.Clamp(cross, -1f, 1f);
 
         car.ApplyControls(controls);
-
-        if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < waypointTriggerDist) 
-            SelectNextWaypoint();
     }
 
     void SelectNextWaypoint()
