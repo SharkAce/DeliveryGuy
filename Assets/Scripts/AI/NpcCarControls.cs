@@ -9,7 +9,7 @@ public class NpcCarControls : MonoBehaviour
     [SerializeField] private float waypointTriggerDist = 1f;
     [SerializeField] private float detectionDistance = 5f;
     private float currentSpeed = 0;
-    private CarController.Controls controls = new CarController.Controls();
+    private CarController.Controls controls;
     private CarController car;
     private float collisionRayOffset;
     [SerializeField] private float collisionRaySpeedFactor = 0.5f;

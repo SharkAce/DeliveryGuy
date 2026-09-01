@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5871171107687602796}
   - component: {fileID: 5871171107687602798}
   - component: {fileID: 5871171107687602797}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CollisionBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171108046194708}
   - component: {fileID: 5871171108046194709}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WheelSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171108101290601}
   - component: {fileID: 5871171108101290602}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WheelSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171108261799141}
   - component: {fileID: 5871171108261799143}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FrontRightWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -304,7 +304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171108443123497}
   - component: {fileID: 5871171108443123499}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RearRightWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171108559009221}
   - component: {fileID: 5871171108559009222}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WheelSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,11 +439,11 @@ GameObject:
   - component: {fileID: 5871171109264843172}
   - component: {fileID: 5871171109264843169}
   - component: {fileID: 5871171109264843168}
-  - component: {fileID: 5871171109264843175}
   - component: {fileID: 5871171109264843174}
   - component: {fileID: 5871171109264843173}
   - component: {fileID: -1942240965402914655}
-  m_Layer: 8
+  - component: {fileID: 6592298046317112037}
+  m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,24 +517,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0.2
---- !u!114 &5871171109264843175
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5871171109264843195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a2aef36af5299d42b76d0fe861ee6ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  frontLeft: {fileID: 5871171109675922264}
-  frontRight: {fileID: 5871171108261799143}
-  rearLeft: {fileID: 5871171109761190644}
-  rearRight: {fileID: 5871171108443123499}
-  maxSteerAngle: 35
-  steerSpeed: 150
 --- !u!210 &5871171109264843174
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -581,6 +563,24 @@ MonoBehaviour:
   waypointTriggerDist: 1
   detectionDistance: 5
   collisionRaySpeedFactor: 0.5
+--- !u!114 &6592298046317112037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5871171109264843195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eb50bac55e0ad149a37a1d81f932b35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frontLeft: {fileID: 5871171109675922264}
+  frontRight: {fileID: 5871171108261799143}
+  rearLeft: {fileID: 5871171109761190644}
+  rearRight: {fileID: 5871171108443123499}
+  maxSteerAngle: 35
+  steerSpeed: 200
 --- !u!1 &5871171109494502110
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171109494502111}
   - component: {fileID: 5871171109494502104}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: CarSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -672,7 +672,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171109579156185}
   - component: {fileID: 5871171109579156186}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: WheelSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -753,7 +753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171109675922270}
   - component: {fileID: 5871171109675922264}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FrontLeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -806,7 +806,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5871171109761190410}
   - component: {fileID: 5871171109761190644}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: RearLeftWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}

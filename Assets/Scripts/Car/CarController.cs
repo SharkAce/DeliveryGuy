@@ -47,8 +47,8 @@ public class CarController : MonoBehaviour
 
     public void ApplyControls(CarController.Controls new_controls)
     {
-        if (new_controls.driveInput < 0f || new_controls.driveInput > 1f) return;
         if (new_controls.brakeInput < 0f || new_controls.brakeInput > 1f) return;
+        if (new_controls.driveInput < -1f || new_controls.driveInput > 1f) return;
         if (new_controls.steerInput < -1f || new_controls.steerInput > 1f) return;
 
         controls = new_controls;
