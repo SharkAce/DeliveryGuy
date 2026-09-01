@@ -14,7 +14,7 @@ public class WheelController : MonoBehaviour
     public float maxBrakeForce = 3f;
 
     private Rigidbody2D carRb;
-    private TrailRenderer skidTrail;
+    private TrailRenderer skidTrail = null;
 
     public void Init(Rigidbody2D rb)
     {
@@ -74,7 +74,8 @@ public class WheelController : MonoBehaviour
     }
     void ApplyLateralFriction(bool sliding)
     {
-        skidTrail.emitting = sliding;
+        if (skidTrail != null)
+            skidTrail.emitting = sliding;
         float strength = sliding ? slidingLateralFrictionStrength : lateralFrictionStrength;
         float maxStrength = sliding ? slidingMaxLateralStrength : maxLateralStrength;
 
