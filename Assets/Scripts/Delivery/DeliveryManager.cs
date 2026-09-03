@@ -354,6 +354,24 @@ public class DeliveryManager : MonoBehaviour
     {
         timerRunning = false;
 
+        if(phoneUI != null &&
+            CurrentDelivery.ArrivalLines != null &&
+            CurrentDelivery.ArrivalLines.Length > 0)
+        {
+            phoneUI.ShowDialogueSequence(
+                CurrentDelivery.ArrivalLines,
+                OnArrivalDialogueComplete
+            );
+        }
+        else
+        {
+            OnArrivalDialogueComplete();
+        }
+
+    }
+
+    private void OnArrivalDialogueComplete()
+    {
         float completionTime = deliveryElapsedTime;
         float completionQuality = currentFoodQuality;
         bool wasTimed = CurrentDelivery.IsTimedDelivery;

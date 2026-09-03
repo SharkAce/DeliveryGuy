@@ -13,8 +13,16 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Boss Dialogue")]
     [SerializeField] [TextArea] private string bossLine = "";
 
-    [Header("Boss Dialogue Sequence (multi-line, advance with Enter)")]
+    [Header("Boss Dialogue (advance with Enter)")]
     [SerializeField] [TextArea] private string[] dialogueLines;
+
+    [Header("Arrival Dialogue (customer lines, advance with Enter)")]
+    [SerializeField] [TextArea] private string[] arrivalLines;
+
+    public string[] ArrivalLines
+    {
+        get { return arrivalLines; }
+    }
 
     public string BossLine
     {
