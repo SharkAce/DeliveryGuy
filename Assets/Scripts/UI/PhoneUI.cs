@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhoneUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text orderText;
+    [SerializeField] private TMP_Text titleText;
 
     private string[] currentLines;
     private int currentLineIndex;
@@ -21,12 +22,17 @@ public class PhoneUI : MonoBehaviour
     }
 
     /* Shows the first line of dialogue*/
-    public void ShowDialogueSequence(string[] lines, Action onComplete = null)
+    public void ShowDialogueSequence(string[] lines, Action onComplete = null, string speaker = "BOSS")
     {
         if(lines == null || lines.Length < 1)
         {
             onComplete?.Invoke();
             return;
+        }
+
+        if(titleText != null)
+        {
+            titleText.text = speaker;
         }
 
         currentLines = lines;
@@ -56,14 +62,17 @@ public class PhoneUI : MonoBehaviour
         int totalDeliveries,
         DeliveryRoute route)
     {
+        if(titleText != null)
+        {
+            titleText.text = "ORDER";
+        }
+
         orderText.text =
-            "ORDER " +
-            deliveryNumber + "/" + totalDeliveries +
-            "\n\nNew order just came in from " +
-            route.PickupName +
-            ". It's going to " +
-            route.DestinationName +
-            ".";
+            "ORDER " + deliveryNumber + "/" + totalDeliveries +
+            "\n\nPICKUP: " + route.PickupName +
+            "\nDELIVER TO: " + route.DestinationName +
+            "\nORDER: " + route.OrderName + 
+            "\nDRIVER: Delivery Guy #12";
 
         if (!string.IsNullOrEmpty(route.BossLine))
         {
@@ -77,11 +86,16 @@ public class PhoneUI : MonoBehaviour
         DeliveryRoute route,
         float foodQuality)
     {
+        if(titleText != null)
+        {
+            titleText.text = "ORDER";
+        }
+
         orderText.text =
             "ORDER " +
             deliveryNumber + "/" + totalDeliveries +
-            "\n\nGot it? Great. The customer is waiting at " +
-            route.DestinationName +
+            "\n\nGot it? Great. " + route.DestinationName + " is waiting for " +
+            route.OrderName +
             ".\n\nFood quality: " +
             foodQuality.ToString("F0") + "%";
 
@@ -100,6 +114,11 @@ public class PhoneUI : MonoBehaviour
         bool wasTimed,
         int totalScore)
     {
+        if(titleText != null)
+        {
+            titleText.text = "ORDER";
+        }
+
         orderText.text =
             "That's the last one. Good work today." +
             "\n\nFinal score: " + totalScore;

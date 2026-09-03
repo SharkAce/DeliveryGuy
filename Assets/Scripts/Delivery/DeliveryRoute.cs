@@ -5,6 +5,7 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Order Information")]
     [SerializeField] private string pickupName = "Restaurant";
     [SerializeField] private string destinationName = "Customer";
+    [SerializeField] private string orderName = "Order Name";
 
     [Header("Route Points")]
     [SerializeField] private DeliveryPoint pickupPoint;
@@ -13,8 +14,24 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Boss Dialogue")]
     [SerializeField] [TextArea] private string bossLine = "";
 
-    [Header("Boss Dialogue Sequence (multi-line, advance with Enter)")]
+    [Header("Boss Dialogue (advance with Enter)")]
     [SerializeField] [TextArea] private string[] dialogueLines;
+
+    [Header("Arrival Dialogue (customer lines, advance with Enter)")]
+    [SerializeField] [TextArea] private string[] arrivalLines;
+
+    [Header("Arrival Speaker Name")]
+    [SerializeField] private string arrivalSpeakerName = "CLIENT";
+
+    public string ArrivalSpeakerName
+    {
+        get { return arrivalSpeakerName; }
+    }
+
+    public string[] ArrivalLines
+    {
+        get { return arrivalLines; }
+    }
 
     public string BossLine
     {
@@ -42,6 +59,11 @@ public class DeliveryRoute : MonoBehaviour
     public string DestinationName
     {
         get { return destinationName; }
+    }
+
+    public string OrderName
+    {
+        get { return orderName; }
     }
 
     public DeliveryPoint PickupPoint
