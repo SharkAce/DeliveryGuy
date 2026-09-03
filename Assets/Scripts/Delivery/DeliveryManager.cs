@@ -273,6 +273,28 @@ public class DeliveryManager : MonoBehaviour
             100f
         );
 
+        if(objectiveArrow != null)
+        {
+            objectiveArrow.ClearTarget();
+        }
+
+        if(phoneUI != null &&
+            CurrentDelivery.DialogueLines != null &&
+            CurrentDelivery.DialogueLines.Length > 0)
+        {
+            phoneUI.ShowDialogueSequence(
+                CurrentDelivery.DialogueLines,
+                OnDialogueComplete
+            );
+        }
+        else
+        {
+            OnDialogueComplete();
+        }
+    }
+
+    private void OnDialogueComplete()
+    {
         CurrentDelivery.ShowPickup();
 
         if (minimapMarkers != null)
