@@ -19,6 +19,14 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Arrival Dialogue (customer lines, advance with Enter)")]
     [SerializeField] [TextArea] private string[] arrivalLines;
 
+    [Header("Arrival Speaker Name")]
+    [SerializeField] private string arrivalSpeakerName = "CLIENT";
+
+    public string ArrivalSpeakerName
+    {
+        get { return arrivalSpeakerName; }
+    }
+
     public string[] ArrivalLines
     {
         get { return arrivalLines; }

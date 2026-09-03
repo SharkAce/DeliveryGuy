@@ -360,7 +360,8 @@ public class DeliveryManager : MonoBehaviour
         {
             phoneUI.ShowDialogueSequence(
                 CurrentDelivery.ArrivalLines,
-                OnArrivalDialogueComplete
+                OnArrivalDialogueComplete,
+                CurrentDelivery.ArrivalSpeakerName
             );
         }
         else
