@@ -13,6 +13,19 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Boss Dialogue")]
     [SerializeField] [TextArea] private string bossLine = "";
 
+    [Header("Boss Dialogue Sequence (multi-line, advance with Enter)")]
+    [SerializeField] [TextArea] private string[] dialogueLines;
+
+    public string BossLine
+    {
+        get { return bossLine; }
+    }
+
+    public string[] DialogueLines
+    {
+        get { return dialogueLines; }
+    }
+
     [Header("Timing")]
     [SerializeField] private bool timedDelivery = true;
     [SerializeField] private float targetDeliveryTime = 60f;
@@ -29,11 +42,6 @@ public class DeliveryRoute : MonoBehaviour
     public string DestinationName
     {
         get { return destinationName; }
-    }
-
-    public string BossLine
-    {
-        get { return bossLine; }
     }
 
     public DeliveryPoint PickupPoint

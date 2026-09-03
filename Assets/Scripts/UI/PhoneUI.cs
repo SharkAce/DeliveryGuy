@@ -1,9 +1,55 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 
 public class PhoneUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text orderText;
+
+    private string[] currentLines;
+    private int currentLineIndex;
+    private bool isShowingDialogueSequence;
+    private Action onSequenceComplete;
+
+    /* Runs every frame, watches for Enter key*/
+    private void Update()
+    {
+        if(isShowingDialogueSequence && Input.GetKeyDown(KeyCode.Return))
+        {
+            AdvanceDialogue();
+        }
+    }
+
+    /* Shows the first line of dialogue*/
+    public void ShowDialogueSequence(string[] lines, Action onComplete = null)
+    {
+        if(lines == null || lines.Length < 1)
+        {
+            onComplete?.Invoke();
+            return;
+        }
+
+        currentLines = lines;
+        currentLineIndex = 0;
+        isShowingDialogueSequence = true;
+        onSequenceComplete = onComplete;
+
+        orderText.text = currentLines[currentLineIndex];
+    }
+
+    /*Advances dialogue to next line (if end - turn off sequence and run function onComplete*/
+    private void AdvanceDialogue()
+    {
+        currentLineIndex++;
+
+        if(currentLineIndex >= currentLines.Length)
+        {
+            isShowingDialogueSequence = false;
+            onSequenceComplete?.Invoke();
+            return;
+        }
+        orderText.text = currentLines[currentLineIndex];
+    }
 
     public void ShowPickup(
         int deliveryNumber,
