@@ -2,19 +2,25 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+        public struct Controls
+    {
+        public float driveInput;
+        public float brakeInput;
+        public float steerInput;
+        public bool slideInput;
+    }
+
     [Header("Wheels")]
     public WheelController frontLeft;
     public WheelController frontRight;
     public WheelController rearLeft;
     public WheelController rearRight;
 
-    [Header("Steering")]
+    [Header("Controls")]
+    private Controls controls;
     public float maxSteerAngle = 35f;
     public float steerSpeed = 5f;
 
-    [Header("Movement")]
-    [Range(0.1f, 1f)]
-    public float reversePower = 0.65f;
 
     private Rigidbody2D rb;
     private float driveInput;
@@ -36,82 +42,52 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        HandleMovementInput();
-        HandleSteeringInput();
-
-        slideInput = Input.GetKey(KeyCode.Space);
-
         HandleSteering();
+    }
+
+    public void ApplyControls(CarController.Controls new_controls)
+    {
+        if (new_controls.brakeInput < 0f || new_controls.brakeInput > 1f) return;
+        if (new_controls.driveInput < -1f || new_controls.driveInput > 1f) return;
+        if (new_controls.steerInput < -1f || new_controls.steerInput > 1f) return;
+
+        controls = new_controls;
     }
 
     private void FixedUpdate()
     {
         frontLeft.Tick(
-            driveInput,
-            brakeInput,
+            controls.driveInput,
+            controls.brakeInput,
             steerAngle,
             false
         );
 
         frontRight.Tick(
-            driveInput,
-            brakeInput,
+            controls.driveInput,
+            controls.brakeInput,
             steerAngle,
             false
         );
 
         rearLeft.Tick(
-            driveInput,
-            brakeInput,
+            controls.driveInput,
+            controls.brakeInput,
             steerAngle,
-            slideInput
+            controls.slideInput
         );
 
         rearRight.Tick(
-            driveInput,
-            brakeInput,
+            controls.driveInput,
+            controls.brakeInput,
             steerAngle,
-            slideInput
+            controls.slideInput
         );
-    }
-
-    private void HandleMovementInput()
-    {
-        brakeInput = 0f;
-
-        if (Input.GetKey(KeyCode.W))
-        {
-            driveInput = 1f;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            driveInput = -reversePower;
-        }
-        else
-        {
-            driveInput = 0f;
-        }
-    }
-
-    private void HandleSteeringInput()
-    {
-        if (Input.GetKey(KeyCode.A))
-        {
-            steerInput = 1f;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            steerInput = -1f;
-        }
-        else
-        {
-            steerInput = 0f;
-        }
     }
 
     private void HandleSteering()
     {
-        float targetAngle = steerInput * maxSteerAngle;
+        float targetAngle = controls.steerInput * maxSteerAngle;
 
         steerAngle = Mathf.MoveTowards(
             steerAngle,
