@@ -68,13 +68,11 @@ public class PhoneUI : MonoBehaviour
         }
 
         orderText.text =
-            "ORDER " +
-            deliveryNumber + "/" + totalDeliveries +
-            "\n\nNew order just came in from " +
-            route.PickupName +
-            ". It's going to " +
-            route.DestinationName +
-            ".";
+            "ORDER " + deliveryNumber + "/" + totalDeliveries +
+            "\n\nPICKUP: " + route.PickupName +
+            "\nDELIVER TO: " + route.DestinationName +
+            "\nORDER: " + route.OrderName + 
+            "\nDRIVER: Delivery Guy #12";
 
         if (!string.IsNullOrEmpty(route.BossLine))
         {
@@ -96,8 +94,8 @@ public class PhoneUI : MonoBehaviour
         orderText.text =
             "ORDER " +
             deliveryNumber + "/" + totalDeliveries +
-            "\n\nGot it? Great. The customer is waiting at " +
-            route.DestinationName +
+            "\n\nGot it? Great. " + route.DestinationName + " is waiting for " +
+            route.OrderName +
             ".\n\nFood quality: " +
             foodQuality.ToString("F0") + "%";
 

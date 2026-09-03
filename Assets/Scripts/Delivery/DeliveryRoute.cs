@@ -5,6 +5,7 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Order Information")]
     [SerializeField] private string pickupName = "Restaurant";
     [SerializeField] private string destinationName = "Customer";
+    [SerializeField] private string orderName = "Order Name";
 
     [Header("Route Points")]
     [SerializeField] private DeliveryPoint pickupPoint;
@@ -58,6 +59,11 @@ public class DeliveryRoute : MonoBehaviour
     public string DestinationName
     {
         get { return destinationName; }
+    }
+
+    public string OrderName
+    {
+        get { return orderName; }
     }
 
     public DeliveryPoint PickupPoint
