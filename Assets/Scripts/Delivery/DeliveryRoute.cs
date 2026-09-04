@@ -23,6 +23,24 @@ public class DeliveryRoute : MonoBehaviour
     [Header("Arrival Speaker Name")]
     [SerializeField] private string arrivalSpeakerName = "CLIENT";
 
+    [Header("Energy Drink Prompt")]
+    [SerializeField] private bool hasEnergyDrinkPrompt = false;
+
+    [Header("Skip Dialogue (plays if player skips drink)")]
+    [SerializeField] [TextArea] private string[] skipDialogueLines;
+
+    /* Whether this delivery triggers the energy drink prompt */
+    public bool HasEnergyDrinkPrompt
+    {
+        get { return hasEnergyDrinkPrompt; }
+    }
+
+    /* Boss lines that play if player presses Skip */
+    public string[] SkipDialogueLines
+    {
+        get { return skipDialogueLines; }
+    }
+
     public string ArrivalSpeakerName
     {
         get { return arrivalSpeakerName; }

@@ -6,6 +6,10 @@ public class PhoneUI : MonoBehaviour
 {
     [SerializeField] private TMP_Text orderText;
     [SerializeField] private TMP_Text titleText;
+    [SerializeField] private UnityEngine.UI.Button buyButton;
+    [SerializeField] private UnityEngine.UI.Button skipButton;
+    [SerializeField] private TMP_Text buyButtonText;
+    [SerializeField] private TMP_Text skipButtonText;
 
     private string[] currentLines;
     private int currentLineIndex;
@@ -137,5 +141,78 @@ public class PhoneUI : MonoBehaviour
                 "\n\nFinal quality: " +
                 foodQuality.ToString("F0") + "%";
         }
+    }
+
+    /* Shows buy and skip buttons for the energy drink prompt*/
+    public void ShowEnergyDrinkPrompt(float cost, Action onBuy, Action onSkip)
+    {
+        if(titleText != null) titleText.text = "BOSS";
+
+        orderText.text = "Buy an energy drink before next delivery?" +
+        "\n\nCost: $" + cost.ToString("F0");
+
+        if(buyButton != null)
+        {
+            buyButton.gameObject.SetActive(true);
+            buyButtonText.text = "BUY";
+            buyButton.onClick.RemoveAllListeners();
+            buyButton.onClick.AddListener(() =>
+            {
+                HideButtons();
+                onBuy?.Invoke();
+            });
+        }
+
+        if(skipButton != null)
+        {
+            skipButton.gameObject.SetActive(true);
+            if(skipButtonText != null) skipButtonText.text = "SKIP";
+            skipButton.onClick.RemoveAllListeners();
+            skipButton.onClick.AddListener(() =>
+            {
+                HideButtons();
+                onSkip?.Invoke();
+            });
+        }
+    }
+
+    /* Forces buy by making both buttons confirm the purchase*/
+    public void ShowEnergyDrinkForced(float cost, Action onBuy)
+    {
+        if(titleText != null) titleText.text = "BOSS";
+
+        orderText.text = "Buy an energy drink before next delivery?" +
+        "\n\nCost: $" + cost.ToString("F0");
+
+        if(buyButton != null)
+        {
+            buyButton.gameObject.SetActive(true);
+            if(buyButtonText != null) buyButtonText.text = "BUY";
+            buyButton.onClick.RemoveAllListeners();
+            buyButton.onClick.AddListener(() =>
+            {
+                HideButtons();
+                onBuy?.Invoke();
+            });
+        }
+
+        if(skipButton != null)
+        {
+            skipButton.gameObject.SetActive(true);
+            if(skipButtonText != null) skipButtonText.text = "BUY";
+            skipButton.onClick.RemoveAllListeners();
+            skipButton.onClick.AddListener(() =>
+            {
+                HideButtons();
+                onBuy?.Invoke();
+            });
+        }
+    }
+
+    /* Hides both buttons after a choice is made*/
+    private void HideButtons()
+    {
+        buyButton?.gameObject.SetActive(false);
+        skipButton?.gameObject.SetActive(false);
     }
 }
