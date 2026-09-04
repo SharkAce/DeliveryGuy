@@ -63,6 +63,7 @@ public class DeliveryManager : MonoBehaviour
     private float lastDeliveryTip;
     private int lastDeliveryScore;
     private int totalScore;
+    private float totalTips;
 
     private readonly List<DeliveryResult> deliveryResults =
         new List<DeliveryResult>();
@@ -170,6 +171,12 @@ public class DeliveryManager : MonoBehaviour
     {
         get { return totalScore; }
     }
+    
+    /* Running total of tips earned across all deliveries */
+    public float TotalTips
+    {
+        get { return totalTips; }
+    }
 
     public DeliveryResult[] DeliveryResults
     {
@@ -226,6 +233,7 @@ public class DeliveryManager : MonoBehaviour
 
         currentDeliveryIndex = 0;
         totalScore = 0;
+        totalTips = 0;
         deliveryResults.Clear();
 
         BeginCurrentDelivery();
@@ -293,23 +301,78 @@ public class DeliveryManager : MonoBehaviour
         }
     }
 
+    /* Runs after pre-delivery dialogue, with the drink action in delivery 6*/
     private void OnDialogueComplete()
+    {
+        if(CurrentDelivery.HasEnergyDrinkPrompt && phoneUI != null)
+        {
+            float cost = totalTips * 0.51f;
+
+            phoneUI.ShowEnergyDrinkPrompt(
+                cost,
+                onBuy: () =>
+                {
+                    SpendTips(cost);
+                    ProceedToPickup();
+                },
+                onSkip: () =>
+                {
+                    if(CurrentDelivery.SkipDialogueLines != null &&
+                    CurrentDelivery.SkipDialogueLines.Length > 0)
+                    {
+                        phoneUI.ShowDialogueSequence(
+                            CurrentDelivery.SkipDialogueLines,
+                            () =>
+                            {
+                                float forcedCost = totalTips * 0.51f;
+                                phoneUI.ShowEnergyDrinkForced(
+                                    forcedCost,
+                                    onBuy: () =>
+                                    {
+                                        SpendTips(forcedCost);
+                                        ProceedToPickup();
+                                    }
+                                );
+                            }
+                        );
+                    }
+                    else
+                    {
+                        float forcedCost = totalTips * 0.51f;
+                        phoneUI.ShowEnergyDrinkForced(
+                            forcedCost,
+                            onBuy: () =>
+                            {
+                                SpendTips(forcedCost);
+                                ProceedToPickup();
+                            }
+                        );
+                    }
+                }
+            );
+            return;
+        }
+        ProceedToPickup();
+    }
+
+    /* Shows pickup UI and sets arrow target*/
+    private void ProceedToPickup()
     {
         CurrentDelivery.ShowPickup();
 
-        if (minimapMarkers != null)
+        if(minimapMarkers != null)
         {
             minimapMarkers.ShowPickup(currentDeliveryIndex);
         }
 
-        if (objectiveArrow != null)
+        if(objectiveArrow != null)
         {
             objectiveArrow.SetTarget(
                 CurrentDelivery.PickupPoint.transform
             );
         }
 
-        if (phoneUI != null)
+        if(phoneUI != null)
         {
             phoneUI.ShowPickup(
                 currentDeliveryIndex + 1,
@@ -470,6 +533,8 @@ public class DeliveryManager : MonoBehaviour
             lastDeliveryTip
         );
 
+        totalTips += lastDeliveryTip;
+
         float totalWeight =
             timeWeight +
             foodQualityWeight +
@@ -523,6 +588,12 @@ public class DeliveryManager : MonoBehaviour
             0f,
             currentDrivingScore - drivingPenalty
         );
+    }
+
+    /* Deducts purchase cost from tip total*/
+    public void SpendTips(float amount)
+    {
+        totalTips = Mathf.Max(0, totalTips - amount);
     }
 
 }
