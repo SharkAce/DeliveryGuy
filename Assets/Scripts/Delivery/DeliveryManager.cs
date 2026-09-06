@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public enum DrivingRating
 {
@@ -66,6 +67,7 @@ public class DeliveryManager : MonoBehaviour
     private int lastDeliveryScore;
     private int totalScore;
     private float totalTips;
+    private float timerScale = 1f;
 
     private readonly List<DeliveryResult> deliveryResults =
         new List<DeliveryResult>();
@@ -252,12 +254,13 @@ public class DeliveryManager : MonoBehaviour
     {
         if (timerRunning)
         {
-            deliveryElapsedTime += Time.deltaTime;
+            deliveryElapsedTime += Time.deltaTime * timerScale;
             if (hudDisplay != null)
             {
-                bool overTime = CurrentDelivery.IsTimedDelivery &&
-                deliveryElapsedTime > CurrentDelivery.TargetDeliveryTime;
-                hudDisplay.UpdateTimer(deliveryElapsedTime, overTime);
+                float remaining = Mathf.Max(0f,
+                    CurrentDelivery.TargetDeliveryTime - deliveryElapsedTime);
+                hudDisplay.UpdateTimer(remaining);
+                hudDisplay.UpdateFoodQuality(currentFoodQuality);
             }
         }
     }
@@ -381,6 +384,7 @@ public class DeliveryManager : MonoBehaviour
         CurrentDelivery.ShowPickup();
 
         deliveryElapsedTime = 0f;
+        timerScale = 1f;
         timerRunning = true;
 
         if(hudDisplay != null)
@@ -415,6 +419,11 @@ public class DeliveryManager : MonoBehaviour
     {
         currentState = DeliveryState.CarryingPackage;
         CurrentDelivery.ShowDropOff();
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateFoodQuality(currentFoodQuality);
+        }
 
         if (minimapMarkers != null)
         {
@@ -470,7 +479,7 @@ public class DeliveryManager : MonoBehaviour
         if(hudDisplay != null)
         {
             hudDisplay.UpdateMoney(totalTips);
-            hudDisplay.ShowPopup(lastDeliveryTip);
+            hudDisplay.ShowPositivePopup(lastDeliveryTip);
         }
         StoreDeliveryResult();
 
@@ -615,6 +624,11 @@ public class DeliveryManager : MonoBehaviour
             currentFoodQuality - foodPenalty
         );
 
+        if(hudDisplay != null)
+        {
+            hudDisplay.ShowNegativePopup(foodPenalty);
+        }
+
         currentDrivingScore = Mathf.Max(
             0f,
             currentDrivingScore - drivingPenalty
@@ -628,8 +642,28 @@ public class DeliveryManager : MonoBehaviour
         if(hudDisplay != null)
         {
             hudDisplay.UpdateMoney(totalTips);
-            hudDisplay.ShowPopup(-amount);
+            hudDisplay.ShowNegativePopup(amount);
+            if (CurrentDelivery.HasEnergyDrinkPrompt)
+            {
+                StartCoroutine(SlowTimer());
+            }
         }
     }
 
+    /* Sets timer speed (for energy drink slowdown)*/
+    public void SetTimerScale(float scale)
+    {
+        timerScale = scale;
+    }
+
+    /*Wait 5 seconds, then slow down timer for energy drink effect*/
+    private IEnumerator SlowTimer()
+    {
+        yield return new WaitForSeconds(5f);
+    if (hudDisplay != null)
+    {
+        hudDisplay.ShowEnergyDrinkBanner();
+    }
+    SetTimerScale(0.05f);
+    }
 }
