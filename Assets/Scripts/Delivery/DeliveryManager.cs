@@ -32,6 +32,8 @@ public class DeliveryManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private PhoneUI phoneUI;
 
+    [SerializeField] private HUDDisplay hudDisplay;
+
     [Header("Food Quality")]
     [SerializeField] private float startingFoodQuality = 100f;
     [SerializeField] private float penaltyPerImpactSpeed = 2f;
@@ -244,6 +246,10 @@ public class DeliveryManager : MonoBehaviour
         if (timerRunning)
         {
             deliveryElapsedTime += Time.deltaTime;
+            if (hudDisplay != null)
+            {
+                hudDisplay.UpdateTimer(deliveryElapsedTime);
+            }
         }
     }
 
@@ -441,6 +447,11 @@ public class DeliveryManager : MonoBehaviour
         bool wasTimed = CurrentDelivery.IsTimedDelivery;
 
         CalculateDeliveryRewards();
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateMoney(totalTips);
+            hudDisplay.ShowPopup(lastDeliveryTip);
+        }
         StoreDeliveryResult();
 
         CurrentDelivery.Hide();
@@ -590,10 +601,15 @@ public class DeliveryManager : MonoBehaviour
         );
     }
 
-    /* Deducts purchase cost from tip total*/
+    /* Deducts purchase cost from tip total, update HUD*/
     public void SpendTips(float amount)
     {
         totalTips = Mathf.Max(0, totalTips - amount);
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateMoney(totalTips);
+            hudDisplay.ShowPopup(-amount);
+        }
     }
 
 }
