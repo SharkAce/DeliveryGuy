@@ -44,7 +44,7 @@ public class PhoneUI : MonoBehaviour
         isShowingDialogueSequence = true;
         onSequenceComplete = onComplete;
 
-        orderText.text = currentLines[currentLineIndex];
+        orderText.text = currentLines[currentLineIndex] + "\n\n[Press ENTER to continue]";
     }
 
     /*Advances dialogue to next line (if end - turn off sequence and run function onComplete*/
@@ -58,7 +58,7 @@ public class PhoneUI : MonoBehaviour
             onSequenceComplete?.Invoke();
             return;
         }
-        orderText.text = currentLines[currentLineIndex];
+        orderText.text = currentLines[currentLineIndex] + "\n\n[Press ENTER to continue]";
     }
 
     public void ShowPickup(
