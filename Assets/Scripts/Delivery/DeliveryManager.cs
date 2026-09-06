@@ -236,6 +236,13 @@ public class DeliveryManager : MonoBehaviour
         currentDeliveryIndex = 0;
         totalScore = 0;
         totalTips = 0;
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateMoney(0f);
+            hudDisplay.HideTimer();
+        }
+
         deliveryResults.Clear();
 
         BeginCurrentDelivery();
@@ -248,7 +255,9 @@ public class DeliveryManager : MonoBehaviour
             deliveryElapsedTime += Time.deltaTime;
             if (hudDisplay != null)
             {
-                hudDisplay.UpdateTimer(deliveryElapsedTime);
+                bool overTime = CurrentDelivery.IsTimedDelivery &&
+                deliveryElapsedTime > CurrentDelivery.TargetDeliveryTime;
+                hudDisplay.UpdateTimer(deliveryElapsedTime, overTime);
             }
         }
     }
@@ -290,6 +299,11 @@ public class DeliveryManager : MonoBehaviour
         if(objectiveArrow != null)
         {
             objectiveArrow.ClearTarget();
+        }
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.HideTimer();
         }
 
         if(phoneUI != null &&
@@ -366,6 +380,15 @@ public class DeliveryManager : MonoBehaviour
     {
         CurrentDelivery.ShowPickup();
 
+        deliveryElapsedTime = 0f;
+        timerRunning = true;
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.ShowTimer();
+            hudDisplay.UpdateTimer(0f);
+        }
+
         if(minimapMarkers != null)
         {
             minimapMarkers.ShowPickup(currentDeliveryIndex);
@@ -391,9 +414,6 @@ public class DeliveryManager : MonoBehaviour
     private void CollectPackage()
     {
         currentState = DeliveryState.CarryingPackage;
-        deliveryElapsedTime = 0f;
-        timerRunning = CurrentDelivery.IsTimedDelivery;
-
         CurrentDelivery.ShowDropOff();
 
         if (minimapMarkers != null)

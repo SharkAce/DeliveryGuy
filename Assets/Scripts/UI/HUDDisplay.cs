@@ -17,14 +17,33 @@ public class HUDDisplay : MonoBehaviour
         }
     }
 
-    /* Update timer display*/
-    public void UpdateTimer(float time)
+    /* Update timer display, turns red when over targer time*/
+    public void UpdateTimer(float time, bool overTime = false)
     {
         if(timerText != null)
         {
             int minutes = Mathf.FloorToInt(time / 60f);
             int seconds = Mathf.FloorToInt(time % 60f);
             timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00");
+            timerText.color = overTime ? Color.red : Color.white;
+        }
+    }
+
+    /* Hides timer between deliveries*/
+    public void HideTimer()
+    {
+        if(timerText != null)
+        {
+            timerText.gameObject.SetActive(false);
+        }
+    }
+
+    /* Show timer when delivery begins*/
+    public void ShowTimer()
+    {
+        if(timerText != null)
+        {
+            timerText.gameObject.SetActive(true);
         }
     }
 
