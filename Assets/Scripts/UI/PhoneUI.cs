@@ -10,6 +10,8 @@ public class PhoneUI : MonoBehaviour
     [SerializeField] private UnityEngine.UI.Button skipButton;
     [SerializeField] private TMP_Text buyButtonText;
     [SerializeField] private TMP_Text skipButtonText;
+    [SerializeField] private AudioClip advanceSound;
+    [SerializeField] private AudioSource phoneSounds;
 
     private string[] currentLines;
     private int currentLineIndex;
@@ -25,9 +27,18 @@ public class PhoneUI : MonoBehaviour
         }
     }
 
+    public void OnBubbleClick()
+    {
+        if(isShowingDialogueSequence)
+        {
+            AdvanceDialogue();
+        }
+    }
+
     /* Shows the first line of dialogue*/
     public void ShowDialogueSequence(string[] lines, Action onComplete = null, string speaker = "BOSS")
     {
+        phoneSounds.PlayOneShot(advanceSound);
         if(lines == null || lines.Length < 1)
         {
             onComplete?.Invoke();
@@ -50,8 +61,8 @@ public class PhoneUI : MonoBehaviour
     /*Advances dialogue to next line (if end - turn off sequence and run function onComplete*/
     private void AdvanceDialogue()
     {
+        phoneSounds.PlayOneShot(advanceSound);
         currentLineIndex++;
-
         if(currentLineIndex >= currentLines.Length)
         {
             isShowingDialogueSequence = false;
@@ -66,6 +77,7 @@ public class PhoneUI : MonoBehaviour
         int totalDeliveries,
         DeliveryRoute route)
     {
+        phoneSounds.PlayOneShot(advanceSound);
         if(titleText != null)
         {
             titleText.text = "ORDER";
@@ -90,6 +102,7 @@ public class PhoneUI : MonoBehaviour
         DeliveryRoute route,
         float foodQuality)
     {
+        phoneSounds.PlayOneShot(advanceSound);
         if(titleText != null)
         {
             titleText.text = "ORDER";
@@ -118,6 +131,7 @@ public class PhoneUI : MonoBehaviour
         bool wasTimed,
         int totalScore)
     {
+        phoneSounds.PlayOneShot(advanceSound);
         if(titleText != null)
         {
             titleText.text = "ORDER";
