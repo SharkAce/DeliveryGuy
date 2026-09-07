@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public enum DrivingRating
 {
@@ -31,6 +32,8 @@ public class DeliveryManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private PhoneUI phoneUI;
+
+    [SerializeField] private HUDDisplay hudDisplay;
 
     [Header("Food Quality")]
     [SerializeField] private float startingFoodQuality = 100f;
@@ -64,6 +67,7 @@ public class DeliveryManager : MonoBehaviour
     private int lastDeliveryScore;
     private int totalScore;
     private float totalTips;
+    private float timerScale = 1f;
 
     private readonly List<DeliveryResult> deliveryResults =
         new List<DeliveryResult>();
@@ -110,6 +114,15 @@ public class DeliveryManager : MonoBehaviour
         get
         {
             return currentState == DeliveryState.Completed;
+        }
+    }
+
+    public bool IsDialogueActive
+    {
+        get 
+        {
+            return phoneUI != null && 
+            phoneUI.IsShowingDialogue;
         }
     }
 
@@ -234,6 +247,13 @@ public class DeliveryManager : MonoBehaviour
         currentDeliveryIndex = 0;
         totalScore = 0;
         totalTips = 0;
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateMoney(0f);
+            hudDisplay.HideTimer();
+        }
+
         deliveryResults.Clear();
 
         BeginCurrentDelivery();
@@ -243,7 +263,14 @@ public class DeliveryManager : MonoBehaviour
     {
         if (timerRunning)
         {
-            deliveryElapsedTime += Time.deltaTime;
+            deliveryElapsedTime += Time.deltaTime * timerScale;
+            if (hudDisplay != null)
+            {
+                float remaining = Mathf.Max(0f,
+                    CurrentDelivery.TargetDeliveryTime - deliveryElapsedTime);
+                hudDisplay.UpdateTimer(remaining);
+                hudDisplay.UpdateFoodQuality(currentFoodQuality);
+            }
         }
     }
 
@@ -284,6 +311,11 @@ public class DeliveryManager : MonoBehaviour
         if(objectiveArrow != null)
         {
             objectiveArrow.ClearTarget();
+        }
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.HideTimer();
         }
 
         if(phoneUI != null &&
@@ -360,6 +392,16 @@ public class DeliveryManager : MonoBehaviour
     {
         CurrentDelivery.ShowPickup();
 
+        deliveryElapsedTime = 0f;
+        timerScale = 1f;
+        timerRunning = true;
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.ShowTimer();
+            hudDisplay.UpdateTimer(0f);
+        }
+
         if(minimapMarkers != null)
         {
             minimapMarkers.ShowPickup(currentDeliveryIndex);
@@ -385,10 +427,12 @@ public class DeliveryManager : MonoBehaviour
     private void CollectPackage()
     {
         currentState = DeliveryState.CarryingPackage;
-        deliveryElapsedTime = 0f;
-        timerRunning = CurrentDelivery.IsTimedDelivery;
-
         CurrentDelivery.ShowDropOff();
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateFoodQuality(currentFoodQuality);
+        }
 
         if (minimapMarkers != null)
         {
@@ -441,6 +485,11 @@ public class DeliveryManager : MonoBehaviour
         bool wasTimed = CurrentDelivery.IsTimedDelivery;
 
         CalculateDeliveryRewards();
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateMoney(totalTips);
+            hudDisplay.ShowPositivePopup(lastDeliveryTip);
+        }
         StoreDeliveryResult();
 
         CurrentDelivery.Hide();
@@ -584,16 +633,46 @@ public class DeliveryManager : MonoBehaviour
             currentFoodQuality - foodPenalty
         );
 
+        if(hudDisplay != null)
+        {
+            hudDisplay.ShowNegativePopup(foodPenalty);
+        }
+
         currentDrivingScore = Mathf.Max(
             0f,
             currentDrivingScore - drivingPenalty
         );
     }
 
-    /* Deducts purchase cost from tip total*/
+    /* Deducts purchase cost from tip total, update HUD*/
     public void SpendTips(float amount)
     {
         totalTips = Mathf.Max(0, totalTips - amount);
+        if(hudDisplay != null)
+        {
+            hudDisplay.UpdateMoney(totalTips);
+            hudDisplay.ShowNegativePopup(amount);
+            if (CurrentDelivery.HasEnergyDrinkPrompt)
+            {
+                StartCoroutine(SlowTimer());
+            }
+        }
     }
 
+    /* Sets timer speed (for energy drink slowdown)*/
+    public void SetTimerScale(float scale)
+    {
+        timerScale = scale;
+    }
+
+    /*Wait 5 seconds, then slow down timer for energy drink effect*/
+    private IEnumerator SlowTimer()
+    {
+        yield return new WaitForSeconds(5f);
+    if (hudDisplay != null)
+    {
+        hudDisplay.ShowEnergyDrinkBanner();
+    }
+    SetTimerScale(0.05f);
+    }
 }

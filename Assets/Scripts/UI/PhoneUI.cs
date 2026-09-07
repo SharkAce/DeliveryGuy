@@ -16,6 +16,12 @@ public class PhoneUI : MonoBehaviour
     private bool isShowingDialogueSequence;
     private Action onSequenceComplete;
 
+    /* Exposes dialogue state for car input blocking */
+    public bool IsShowingDialogue
+    {
+        get { return isShowingDialogueSequence; }
+    }
+
     /* Runs every frame, watches for Enter key*/
     private void Update()
     {
@@ -44,7 +50,7 @@ public class PhoneUI : MonoBehaviour
         isShowingDialogueSequence = true;
         onSequenceComplete = onComplete;
 
-        orderText.text = currentLines[currentLineIndex];
+        orderText.text = currentLines[currentLineIndex] + "\n\n[Press ENTER to continue]";
     }
 
     /*Advances dialogue to next line (if end - turn off sequence and run function onComplete*/
@@ -58,7 +64,7 @@ public class PhoneUI : MonoBehaviour
             onSequenceComplete?.Invoke();
             return;
         }
-        orderText.text = currentLines[currentLineIndex];
+        orderText.text = currentLines[currentLineIndex] + "\n\n[Press ENTER to continue]";
     }
 
     public void ShowPickup(
