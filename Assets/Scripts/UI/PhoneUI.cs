@@ -16,6 +16,12 @@ public class PhoneUI : MonoBehaviour
     private bool isShowingDialogueSequence;
     private Action onSequenceComplete;
 
+    /* Exposes dialogue state for car input blocking */
+    public bool IsShowingDialogue
+    {
+        get { return isShowingDialogueSequence; }
+    }
+
     /* Runs every frame, watches for Enter key*/
     private void Update()
     {

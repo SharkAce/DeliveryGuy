@@ -8,6 +8,7 @@ public class PlayerCarControls : MonoBehaviour
     public float reversePower = 0.65f;
     private CarController.Controls controls;
     private CarController car;
+    [SerializeField] private HUDDisplay hudDisplay;
 
     void Start()
     {
@@ -20,12 +21,33 @@ public class PlayerCarControls : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W)) controls.driveInput = 1f;
-        else if (Input.GetKey(KeyCode.S)) controls.driveInput = -reversePower;
+        DeliveryManager manager = FindObjectOfType<DeliveryManager>();
+
+        if(manager != null && manager.IsDialogueActive)
+        {
+            controls.driveInput = 0f;
+            controls.steerInput = 0f;
+            controls.slideInput = false;
+            car.ApplyControls(controls);
+
+            if(hudDisplay != null)
+            {
+                hudDisplay.ShowDialogueHint();
+            }
+            return;
+        }
+
+        if(hudDisplay != null)
+        {
+            hudDisplay.HideDialogueHint();
+        }
+
+        if(Input.GetKey(KeyCode.W)) controls.driveInput = 1f;
+        else if(Input.GetKey(KeyCode.S)) controls.driveInput = -reversePower;
         else controls.driveInput = 0f;
-        
-        if (Input.GetKey(KeyCode.A)) controls.steerInput = 1f;
-        else if (Input.GetKey(KeyCode.D)) controls.steerInput = -1f;
+
+        if(Input.GetKey(KeyCode.A)) controls.steerInput = 1f;
+        else if(Input.GetKey(KeyCode.D)) controls.steerInput = -1f;
         else controls.steerInput = 0f;
 
         controls.slideInput = Input.GetKey(KeyCode.Space);

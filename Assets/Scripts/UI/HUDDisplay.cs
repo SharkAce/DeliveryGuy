@@ -9,6 +9,7 @@ public class HUDDisplay : MonoBehaviour
     [SerializeField] private TMP_Text popupText;
     [SerializeField] private TMP_Text foodQualityText;
     [SerializeField] private GameObject energyDrinkBanner;
+    [SerializeField] private TMP_Text dialogueHintText;
 
     private Coroutine breatheCoroutine;
 
@@ -127,7 +128,7 @@ public class HUDDisplay : MonoBehaviour
     /* Shows energy drink banner for 1 second then fades */
     public void ShowEnergyDrinkBanner()
     {
-        if (energyDrinkBanner != null)
+        if(energyDrinkBanner != null)
         {
             StartCoroutine(EnergyDrinkBannerSequence());
         }
@@ -159,6 +160,24 @@ public class HUDDisplay : MonoBehaviour
         group.alpha = 1f;
     }
 
+    /* Shows dialogue hint when car is locked */
+    public void ShowDialogueHint()
+    {
+        if(dialogueHintText != null)
+        {
+            dialogueHintText.gameObject.SetActive(true);
+        }
+    }
+
+    /* Hides dialogue hint when dialogue ends */
+    public void HideDialogueHint()
+    {
+        if(dialogueHintText != null)
+        {
+            dialogueHintText.gameObject.SetActive(false);
+        }
+    }
+
     /* Fades popup text */
     private IEnumerator FadePopup()
     {
@@ -177,5 +196,16 @@ public class HUDDisplay : MonoBehaviour
         popupText.gameObject.SetActive(false);
         color.a = 1f;
         popupText.color = color;
+    }
+
+    /* Shows a custom message popup in red */
+    public void ShowMessagePopup(string message)
+    {
+        if(popupText == null) return;
+        StopAllCoroutines();
+        popupText.text = message;
+        popupText.color = new Color(0.9f, 0.1f, 0.1f);
+        popupText.gameObject.SetActive(true);
+        StartCoroutine(FadePopup());
     }
 }

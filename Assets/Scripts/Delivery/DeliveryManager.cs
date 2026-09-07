@@ -117,6 +117,15 @@ public class DeliveryManager : MonoBehaviour
         }
     }
 
+    public bool IsDialogueActive
+    {
+        get 
+        {
+            return phoneUI != null && 
+            phoneUI.IsShowingDialogue;
+        }
+    }
+
     public float DeliveryElapsedTime
     {
         get { return deliveryElapsedTime; }
