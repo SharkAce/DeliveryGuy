@@ -43,7 +43,6 @@ public class CarSoundManager : MonoBehaviour
 
     public void StartCrashSound()
     {
-        Debug.Log("hit");
         crashAudio.PlayOneShot(crashSound, crashVolume);
     }
 }
