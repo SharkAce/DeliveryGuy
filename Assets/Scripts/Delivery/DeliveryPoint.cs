@@ -6,6 +6,14 @@ public class DeliveryPoint : MonoBehaviour
     private CarController carInRange;
     private int carCollidersInRange;
 
+    [Header("UI")]
+    [SerializeField] private GameObject interactionPrompt;
+
+    private void Awake()
+    {
+        SetInteractionPrompt(false);
+    }
+
     public void Initialize(DeliveryManager manager)
     {
         deliveryManager = manager;
@@ -15,6 +23,7 @@ public class DeliveryPoint : MonoBehaviour
     {
         if (carInRange != null && Input.GetKeyDown(KeyCode.E))
         {
+            SetInteractionPrompt(false);
             deliveryManager.ReachPoint(this);
         }
     }
@@ -32,7 +41,8 @@ public class DeliveryPoint : MonoBehaviour
         {
             carInRange = car;
             carCollidersInRange = 1;
-            Debug.Log("Press E to interact.");
+
+            SetInteractionPrompt(true);
         }
         else if (car == carInRange)
         {
@@ -54,6 +64,7 @@ public class DeliveryPoint : MonoBehaviour
         if (carCollidersInRange == 0)
         {
             carInRange = null;
+            SetInteractionPrompt(false);
         }
     }
 
@@ -61,5 +72,14 @@ public class DeliveryPoint : MonoBehaviour
     {
         carInRange = null;
         carCollidersInRange = 0;
+        SetInteractionPrompt(false);
+    }
+
+    private void SetInteractionPrompt(bool visible)
+    {
+        if (interactionPrompt != null)
+        {
+            interactionPrompt.SetActive(visible);
+        }
     }
 }

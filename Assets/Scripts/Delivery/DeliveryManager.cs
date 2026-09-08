@@ -461,7 +461,9 @@ public class DeliveryManager : MonoBehaviour
     {
         timerRunning = false;
 
-        if(phoneUI != null &&
+        CurrentDelivery.Hide();
+
+        if (phoneUI != null &&
             CurrentDelivery.ArrivalLines != null &&
             CurrentDelivery.ArrivalLines.Length > 0)
         {
@@ -475,7 +477,6 @@ public class DeliveryManager : MonoBehaviour
         {
             OnArrivalDialogueComplete();
         }
-
     }
 
     private void OnArrivalDialogueComplete()
@@ -491,8 +492,6 @@ public class DeliveryManager : MonoBehaviour
             hudDisplay.ShowPositivePopup(lastDeliveryTip);
         }
         StoreDeliveryResult();
-
-        CurrentDelivery.Hide();
         currentDeliveryIndex++;
 
         if (currentDeliveryIndex >= deliveries.Length)
