@@ -231,14 +231,20 @@ public class DeliveryManager : MonoBehaviour
 
     private void Start()
     {
-        if (deliveries == null || deliveries.Length == 0)
+        /* Auto-assign major UI/Manager references*/
+        if(hudDisplay == null) hudDisplay = FindObjectOfType<HUDDisplay>();
+        if(phoneUI == null) phoneUI = FindObjectOfType<PhoneUI>();
+        if(objectiveArrow == null) objectiveArrow = FindObjectOfType<ObjectiveArrow>();
+        if(minimapMarkers == null) minimapMarkers = FindObjectOfType<MinimapDeliveryMarkers>();
+
+        if(deliveries == null || deliveries.Length == 0)
         {
             Debug.LogError("No deliveries have been assigned.");
             enabled = false;
             return;
         }
 
-        for (int i = 0; i < deliveries.Length; i++)
+        for(int i = 0; i < deliveries.Length; i++)
         {
             deliveries[i].Initialize(this);
             deliveries[i].Hide();
@@ -650,7 +656,7 @@ public class DeliveryManager : MonoBehaviour
         if(hudDisplay != null)
         {
             hudDisplay.UpdateMoney(totalTips);
-            hudDisplay.ShowNegativePopup(amount);
+            hudDisplay.ShowMoneySpentPopup(amount);
             if (CurrentDelivery.HasEnergyDrinkPrompt)
             {
                 StartCoroutine(SlowTimer());

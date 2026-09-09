@@ -19,6 +19,9 @@ public class PlayerCarControls : MonoBehaviour
         deliveryManager = FindObjectOfType<DeliveryManager>();
         carBodies = GetComponentsInChildren<Rigidbody2D>();
 
+        /* Auto assign HUD*/
+        if(hudDisplay == null) hudDisplay = FindObjectOfType<HUDDisplay>();
+
         controls.driveInput = 0f;
         controls.brakeInput = 0f;
         controls.steerInput = 0f;
