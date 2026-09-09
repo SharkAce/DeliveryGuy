@@ -35,6 +35,10 @@ public class DeliveryManager : MonoBehaviour
 
     [SerializeField] private HUDDisplay hudDisplay;
 
+    [Header("Day and Night")]
+    [SerializeField]
+    private NightOverlayController nightOverlay;
+
     [Header("Food Quality")]
     [SerializeField] private float startingFoodQuality = 100f;
     [SerializeField] private float penaltyPerImpactSpeed = 2f;
@@ -119,9 +123,9 @@ public class DeliveryManager : MonoBehaviour
 
     public bool IsDialogueActive
     {
-        get 
+        get
         {
-            return phoneUI != null && 
+            return phoneUI != null &&
             phoneUI.IsShowingDialogue;
         }
     }
@@ -184,7 +188,7 @@ public class DeliveryManager : MonoBehaviour
     {
         get { return totalScore; }
     }
-    
+
     /* Running total of tips earned across all deliveries */
     public float TotalTips
     {
@@ -232,19 +236,20 @@ public class DeliveryManager : MonoBehaviour
     private void Start()
     {
         /* Auto-assign major UI/Manager references*/
-        if(hudDisplay == null) hudDisplay = FindObjectOfType<HUDDisplay>();
-        if(phoneUI == null) phoneUI = FindObjectOfType<PhoneUI>();
-        if(objectiveArrow == null) objectiveArrow = FindObjectOfType<ObjectiveArrow>();
-        if(minimapMarkers == null) minimapMarkers = FindObjectOfType<MinimapDeliveryMarkers>();
+        if (hudDisplay == null) hudDisplay = FindObjectOfType<HUDDisplay>();
+        if (phoneUI == null) phoneUI = FindObjectOfType<PhoneUI>();
+        if (objectiveArrow == null) objectiveArrow = FindObjectOfType<ObjectiveArrow>();
+        if (minimapMarkers == null) minimapMarkers = FindObjectOfType<MinimapDeliveryMarkers>();
+        if (nightOverlay == null) nightOverlay = FindObjectOfType<NightOverlayController>();
 
-        if(deliveries == null || deliveries.Length == 0)
+        if (deliveries == null || deliveries.Length == 0)
         {
             Debug.LogError("No deliveries have been assigned.");
             enabled = false;
             return;
         }
 
-        for(int i = 0; i < deliveries.Length; i++)
+        for (int i = 0; i < deliveries.Length; i++)
         {
             deliveries[i].Initialize(this);
             deliveries[i].Hide();
@@ -254,10 +259,19 @@ public class DeliveryManager : MonoBehaviour
         totalScore = 0;
         totalTips = 0;
 
-        if(hudDisplay != null)
+        if (nightOverlay != null)
+        {
+            nightOverlay.UpdateLighting(
+                0,
+                deliveries.Length
+            );
+        }
+
+        if (hudDisplay != null)
         {
             hudDisplay.UpdateMoney(0f);
-            hudDisplay.HideTimer();
+            hudDisplay.UpdateScore(0);
+            hudDisplay.ShowTimer();
         }
 
         deliveryResults.Clear();
@@ -274,7 +288,12 @@ public class DeliveryManager : MonoBehaviour
             {
                 float remaining = Mathf.Max(0f,
                     CurrentDelivery.TargetDeliveryTime - deliveryElapsedTime);
-                hudDisplay.UpdateTimer(remaining);
+
+                if (CurrentDelivery.IsTimedDelivery)
+                {
+                    hudDisplay.UpdateTimer(remaining);
+                }
+
                 hudDisplay.UpdateFoodQuality(currentFoodQuality);
             }
         }
@@ -314,17 +333,28 @@ public class DeliveryManager : MonoBehaviour
             100f
         );
 
-        if(objectiveArrow != null)
+        if (objectiveArrow != null)
         {
             objectiveArrow.ClearTarget();
         }
 
-        if(hudDisplay != null)
+        if (hudDisplay != null)
         {
-            hudDisplay.HideTimer();
+            hudDisplay.ShowTimer();
+
+            if (CurrentDelivery.IsTimedDelivery)
+            {
+                hudDisplay.UpdateTimer(
+                    CurrentDelivery.TargetDeliveryTime
+                );
+            }
+            else
+            {
+                hudDisplay.ShowUntimedTimer();
+            }
         }
 
-        if(phoneUI != null &&
+        if (phoneUI != null &&
             CurrentDelivery.DialogueLines != null &&
             CurrentDelivery.DialogueLines.Length > 0)
         {
@@ -342,7 +372,7 @@ public class DeliveryManager : MonoBehaviour
     /* Runs after pre-delivery dialogue, with the drink action in delivery 6*/
     private void OnDialogueComplete()
     {
-        if(CurrentDelivery.HasEnergyDrinkPrompt && phoneUI != null)
+        if (CurrentDelivery.HasEnergyDrinkPrompt && phoneUI != null)
         {
             float cost = totalTips * 0.51f;
 
@@ -355,7 +385,7 @@ public class DeliveryManager : MonoBehaviour
                 },
                 onSkip: () =>
                 {
-                    if(CurrentDelivery.SkipDialogueLines != null &&
+                    if (CurrentDelivery.SkipDialogueLines != null &&
                     CurrentDelivery.SkipDialogueLines.Length > 0)
                     {
                         phoneUI.ShowDialogueSequence(
@@ -402,25 +432,35 @@ public class DeliveryManager : MonoBehaviour
         timerScale = 1f;
         timerRunning = true;
 
-        if(hudDisplay != null)
+        if (hudDisplay != null)
         {
             hudDisplay.ShowTimer();
-            hudDisplay.UpdateTimer(0f);
+
+            if (CurrentDelivery.IsTimedDelivery)
+            {
+                hudDisplay.UpdateTimer(
+                    CurrentDelivery.TargetDeliveryTime
+                );
+            }
+            else
+            {
+                hudDisplay.ShowUntimedTimer();
+            }
         }
 
-        if(minimapMarkers != null)
+        if (minimapMarkers != null)
         {
             minimapMarkers.ShowPickup(currentDeliveryIndex);
         }
 
-        if(objectiveArrow != null)
+        if (objectiveArrow != null)
         {
             objectiveArrow.SetTarget(
                 CurrentDelivery.PickupPoint.transform
             );
         }
 
-        if(phoneUI != null)
+        if (phoneUI != null)
         {
             phoneUI.ShowPickup(
                 currentDeliveryIndex + 1,
@@ -435,7 +475,7 @@ public class DeliveryManager : MonoBehaviour
         currentState = DeliveryState.CarryingPackage;
         CurrentDelivery.ShowDropOff();
 
-        if(hudDisplay != null)
+        if (hudDisplay != null)
         {
             hudDisplay.UpdateFoodQuality(currentFoodQuality);
         }
@@ -492,13 +532,22 @@ public class DeliveryManager : MonoBehaviour
         bool wasTimed = CurrentDelivery.IsTimedDelivery;
 
         CalculateDeliveryRewards();
-        if(hudDisplay != null)
+        if (hudDisplay != null)
         {
             hudDisplay.UpdateMoney(totalTips);
+            hudDisplay.UpdateScore(totalScore);
             hudDisplay.ShowPositivePopup(lastDeliveryTip);
         }
         StoreDeliveryResult();
         currentDeliveryIndex++;
+
+        if (nightOverlay != null)
+        {
+            nightOverlay.UpdateLighting(
+                currentDeliveryIndex,
+                deliveries.Length
+            );
+        }
 
         if (currentDeliveryIndex >= deliveries.Length)
         {
@@ -619,7 +668,9 @@ public class DeliveryManager : MonoBehaviour
 
     public void ReportCollision(float impactSpeed)
     {
-        if (!IsCarryingPackage || impactSpeed <= 0f)
+        if (!IsCarryingPackage ||
+            IsDialogueActive ||
+            impactSpeed <= 0f)
         {
             return;
         }
@@ -638,7 +689,7 @@ public class DeliveryManager : MonoBehaviour
             currentFoodQuality - foodPenalty
         );
 
-        if(hudDisplay != null)
+        if (hudDisplay != null)
         {
             hudDisplay.ShowNegativePopup(foodPenalty);
         }
@@ -653,7 +704,7 @@ public class DeliveryManager : MonoBehaviour
     public void SpendTips(float amount)
     {
         totalTips = Mathf.Max(0, totalTips - amount);
-        if(hudDisplay != null)
+        if (hudDisplay != null)
         {
             hudDisplay.UpdateMoney(totalTips);
             hudDisplay.ShowMoneySpentPopup(amount);
@@ -674,10 +725,10 @@ public class DeliveryManager : MonoBehaviour
     private IEnumerator SlowTimer()
     {
         yield return new WaitForSeconds(5f);
-    if (hudDisplay != null)
-    {
-        hudDisplay.ShowEnergyDrinkBanner();
-    }
-    SetTimerScale(0.05f);
+        if (hudDisplay != null)
+        {
+            hudDisplay.ShowEnergyDrinkBanner();
+        }
+        SetTimerScale(0.05f);
     }
 }

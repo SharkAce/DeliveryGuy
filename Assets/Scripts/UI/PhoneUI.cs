@@ -29,6 +29,22 @@ public class PhoneUI : MonoBehaviour
         {
             AdvanceDialogue();
         }
+
+        if (buyButton != null &&
+        buyButton.gameObject.activeInHierarchy &&
+        (Input.GetKeyDown(KeyCode.Alpha1) ||
+         Input.GetKeyDown(KeyCode.Keypad1)))
+        {
+            buyButton.onClick.Invoke();
+        }
+
+        if (skipButton != null &&
+            skipButton.gameObject.activeInHierarchy &&
+            (Input.GetKeyDown(KeyCode.Alpha2) ||
+             Input.GetKeyDown(KeyCode.Keypad2)))
+        {
+            skipButton.onClick.Invoke();
+        }
     }
 
     /* Shows the first line of dialogue*/
@@ -126,27 +142,15 @@ public class PhoneUI : MonoBehaviour
     {
         if(titleText != null)
         {
-            titleText.text = "ORDER";
+            titleText.text = "EVIDENCE";
         }
 
         orderText.text =
-            "That's the last one. Good work today." +
+            "DELIVERY FAILED" +
+            "\n\nPACKAGE CONTENTS: HUMAN ORGANS" +
+            "\nDRIVER STATUS: ARRESTED" +
+            "\nEMPLOYER STATUS: UNKNOWN" +
             "\n\nFinal score: " + totalScore;
-
-        if (wasTimed)
-        {
-            orderText.text +=
-                "\n\nFinal delivery: " +
-                deliveryTime.ToString("F1") +
-                "s | Quality: " +
-                foodQuality.ToString("F0") + "%";
-        }
-        else
-        {
-            orderText.text +=
-                "\n\nFinal quality: " +
-                foodQuality.ToString("F0") + "%";
-        }
     }
 
     /* Shows buy and skip buttons for the energy drink prompt*/
@@ -160,7 +164,7 @@ public class PhoneUI : MonoBehaviour
         if(buyButton != null)
         {
             buyButton.gameObject.SetActive(true);
-            buyButtonText.text = "BUY";
+            buyButtonText.text = "[1] BUY";
             buyButton.onClick.RemoveAllListeners();
             buyButton.onClick.AddListener(() =>
             {
@@ -172,7 +176,7 @@ public class PhoneUI : MonoBehaviour
         if(skipButton != null)
         {
             skipButton.gameObject.SetActive(true);
-            if(skipButtonText != null) skipButtonText.text = "SKIP";
+            if(skipButtonText != null) skipButtonText.text = "[2] SKIP";
             skipButton.onClick.RemoveAllListeners();
             skipButton.onClick.AddListener(() =>
             {
@@ -193,7 +197,7 @@ public class PhoneUI : MonoBehaviour
         if(buyButton != null)
         {
             buyButton.gameObject.SetActive(true);
-            if(buyButtonText != null) buyButtonText.text = "BUY";
+            if(buyButtonText != null) buyButtonText.text = "[1] BUY";
             buyButton.onClick.RemoveAllListeners();
             buyButton.onClick.AddListener(() =>
             {
@@ -205,7 +209,7 @@ public class PhoneUI : MonoBehaviour
         if(skipButton != null)
         {
             skipButton.gameObject.SetActive(true);
-            if(skipButtonText != null) skipButtonText.text = "BUY";
+            if(skipButtonText != null) skipButtonText.text = "[1] BUY";
             skipButton.onClick.RemoveAllListeners();
             skipButton.onClick.AddListener(() =>
             {

@@ -6,33 +6,43 @@ public class HUDDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text moneyText;
     [SerializeField] private TMP_Text timerText;
-    [SerializeField] private TMP_Text popupText;
     [SerializeField] private TMP_Text foodQualityText;
     [SerializeField] private GameObject energyDrinkBanner;
     [SerializeField] private TMP_Text dialogueHintText;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text moneyPopupText;
+    [SerializeField] private TMP_Text qualityPopupText;
 
+    private Coroutine moneyPopupCoroutine;
+    private Coroutine qualityPopupCoroutine;
     private Coroutine breatheCoroutine;
+    private Coroutine dialogueHintCoroutine;
 
     private void Start()
     {
         /* Find deactivated UI children by name*/
-        if(energyDrinkBanner == null)
+        if (energyDrinkBanner == null)
         {
             Transform banner = transform.Find("EnergyDrinkBanner");
-            if(banner != null) energyDrinkBanner = banner.gameObject;
+            if (banner != null) energyDrinkBanner = banner.gameObject;
         }
 
-        if(dialogueHintText == null)
+        if (dialogueHintText == null)
         {
             Transform hint = transform.Find("DialogueHint");
-            if(hint != null) dialogueHintText = hint.GetComponent<TMP_Text>();
+            if (hint != null) dialogueHintText = hint.GetComponent<TMP_Text>();
+        }
+
+        if (dialogueHintText != null)
+        {
+            dialogueHintText.gameObject.SetActive(false);
         }
     }
 
     /* Update money display */
     public void UpdateMoney(float amount)
     {
-        if(moneyText != null)
+        if (moneyText != null)
         {
             moneyText.text = "$" + amount.ToString("F0");
         }
@@ -41,7 +51,7 @@ public class HUDDisplay : MonoBehaviour
     /* Update food quality display */
     public void UpdateFoodQuality(float quality)
     {
-        if(foodQualityText != null)
+        if (foodQualityText != null)
         {
             foodQualityText.text = "Quality: " + quality.ToString("F0") + "%";
         }
@@ -50,18 +60,25 @@ public class HUDDisplay : MonoBehaviour
     /* Shows red popup for money spent on energy drinks */
     public void ShowMoneySpentPopup(float amount)
     {
-        if(popupText == null) return;
-        StopAllCoroutines();
-        popupText.text = "-$" + amount.ToString("F0");
-        popupText.color = new Color(0.9f, 0.1f, 0.1f);
-        popupText.gameObject.SetActive(true);
-        StartCoroutine(FadePopup());
+        if (moneyPopupText == null) return;
+
+        if (moneyPopupCoroutine != null)
+        {
+            StopCoroutine(moneyPopupCoroutine);
+        }
+
+        moneyPopupText.text = "-$" + amount.ToString("F0");
+        moneyPopupText.color = new Color(0.9f, 0.1f, 0.1f, 1f);
+        moneyPopupText.gameObject.SetActive(true);
+        moneyPopupCoroutine = StartCoroutine(
+            FadePopup(moneyPopupText, true)
+        );
     }
 
     /* Update countdown timer, turns red and breathes when at zero */
     public void UpdateTimer(float remaining)
     {
-        if(timerText == null) return;
+        if (timerText == null) return;
 
         remaining = Mathf.Max(0f, remaining);
 
@@ -69,10 +86,10 @@ public class HUDDisplay : MonoBehaviour
         int milliseconds = Mathf.FloorToInt((remaining - seconds) * 1000f);
         timerText.text = "Time: " + seconds.ToString("00") + ":" + milliseconds.ToString("000");
 
-        if(remaining <= 5f)
+        if (remaining <= 5f)
         {
             timerText.color = new Color(0.8f, 0f, 0f);
-            if(breatheCoroutine == null)
+            if (breatheCoroutine == null)
             {
                 breatheCoroutine = StartCoroutine(BreatheTimer());
             }
@@ -80,7 +97,7 @@ public class HUDDisplay : MonoBehaviour
         else
         {
             timerText.color = Color.white;
-            if(breatheCoroutine != null)
+            if (breatheCoroutine != null)
             {
                 StopCoroutine(breatheCoroutine);
                 breatheCoroutine = null;
@@ -109,9 +126,9 @@ public class HUDDisplay : MonoBehaviour
     /* Hides timer between deliveries */
     public void HideTimer()
     {
-        if(timerText != null)
+        if (timerText != null)
         {
-            if(breatheCoroutine != null)
+            if (breatheCoroutine != null)
             {
                 StopCoroutine(breatheCoroutine);
                 breatheCoroutine = null;
@@ -123,7 +140,7 @@ public class HUDDisplay : MonoBehaviour
     /* Shows timer when delivery begins */
     public void ShowTimer()
     {
-        if(timerText != null)
+        if (timerText != null)
         {
             timerText.color = Color.white;
             timerText.gameObject.SetActive(true);
@@ -133,29 +150,44 @@ public class HUDDisplay : MonoBehaviour
     /* Shows green popup for tips earned */
     public void ShowPositivePopup(float amount)
     {
-        if(popupText == null) return;
-        StopAllCoroutines();
-        popupText.text = "+$" + amount.ToString("F0");
-        popupText.color = new Color(0.2f, 0.8f, 0.2f);
-        popupText.gameObject.SetActive(true);
-        StartCoroutine(FadePopup());
+        if (moneyPopupText == null) return;
+
+        if (moneyPopupCoroutine != null)
+        {
+            StopCoroutine(moneyPopupCoroutine);
+        }
+
+        moneyPopupText.text = "+$" + amount.ToString("F0");
+        moneyPopupText.color = new Color(0.2f, 0.8f, 0.2f, 1f);
+        moneyPopupText.gameObject.SetActive(true);
+        moneyPopupCoroutine = StartCoroutine(
+            FadePopup(moneyPopupText, true)
+        );
     }
 
     /* Shows red popup for quality penalty from crashes */
     public void ShowNegativePopup(float amount)
     {
-        if(popupText == null) return;
-        StopAllCoroutines();
-        popupText.text = "-" + amount.ToString("F0") + "% quality";
-        popupText.color = new Color(0.9f, 0.1f, 0.1f);
-        popupText.gameObject.SetActive(true);
-        StartCoroutine(FadePopup());
+        if (qualityPopupText == null) return;
+
+        if (qualityPopupCoroutine != null)
+        {
+            StopCoroutine(qualityPopupCoroutine);
+        }
+
+        qualityPopupText.text =
+            "-" + amount.ToString("F0") + "% quality";
+        qualityPopupText.color = new Color(0.9f, 0.1f, 0.1f, 1f);
+        qualityPopupText.gameObject.SetActive(true);
+        qualityPopupCoroutine = StartCoroutine(
+            FadePopup(qualityPopupText, false)
+        );
     }
 
     /* Shows energy drink banner for 1 second then fades */
     public void ShowEnergyDrinkBanner()
     {
-        if(energyDrinkBanner != null)
+        if (energyDrinkBanner != null)
         {
             StartCoroutine(EnergyDrinkBannerSequence());
         }
@@ -168,7 +200,7 @@ public class HUDDisplay : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         CanvasGroup group = energyDrinkBanner.GetComponent<CanvasGroup>();
-        if(group == null)
+        if (group == null)
         {
             group = energyDrinkBanner.AddComponent<CanvasGroup>();
         }
@@ -176,7 +208,7 @@ public class HUDDisplay : MonoBehaviour
         float duration = 0.5f;
         float elapsed = 0f;
 
-        while(elapsed < duration)
+        while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
             group.alpha = 1f - (elapsed / duration);
@@ -187,52 +219,136 @@ public class HUDDisplay : MonoBehaviour
         group.alpha = 1f;
     }
 
-    /* Shows dialogue hint when car is locked */
     public void ShowDialogueHint()
     {
-        if(dialogueHintText != null)
+        if (dialogueHintText == null)
         {
-            dialogueHintText.gameObject.SetActive(true);
+            return;
         }
+
+        if (dialogueHintCoroutine != null)
+        {
+            StopCoroutine(dialogueHintCoroutine);
+        }
+
+        Color color = dialogueHintText.color;
+        color.a = 1f;
+        dialogueHintText.color = color;
+        dialogueHintText.gameObject.SetActive(true);
+
+        dialogueHintCoroutine = StartCoroutine(FadeDialogueHint());
     }
 
-    /* Hides dialogue hint when dialogue ends */
     public void HideDialogueHint()
     {
-        if(dialogueHintText != null)
+        if (dialogueHintCoroutine != null)
         {
+            StopCoroutine(dialogueHintCoroutine);
+            dialogueHintCoroutine = null;
+        }
+
+        if (dialogueHintText != null)
+        {
+            Color color = dialogueHintText.color;
+            color.a = 1f;
+            dialogueHintText.color = color;
             dialogueHintText.gameObject.SetActive(false);
         }
     }
 
+    private IEnumerator FadeDialogueHint()
+    {
+        yield return new WaitForSecondsRealtime(1f);
+
+        float duration = 0.5f;
+        float elapsed = 0f;
+        Color color = dialogueHintText.color;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            color.a = 1f - Mathf.Clamp01(elapsed / duration);
+            dialogueHintText.color = color;
+            yield return null;
+        }
+
+        dialogueHintText.gameObject.SetActive(false);
+        color.a = 1f;
+        dialogueHintText.color = color;
+        dialogueHintCoroutine = null;
+    }
+
     /* Fades popup text */
-    private IEnumerator FadePopup()
+    private IEnumerator FadePopup(TMP_Text popup, bool isMoneyPopup)
     {
         float duration = 3f;
         float elapsed = 0f;
-        Color color = popupText.color;
+        Color color = popup.color;
 
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            color.a = 1f - (elapsed / duration);
-            popupText.color = color;
+            color.a = 1f - Mathf.Clamp01(elapsed / duration);
+            popup.color = color;
             yield return null;
         }
 
-        popupText.gameObject.SetActive(false);
+        popup.gameObject.SetActive(false);
         color.a = 1f;
-        popupText.color = color;
+        popup.color = color;
+
+        if (isMoneyPopup)
+        {
+            moneyPopupCoroutine = null;
+        }
+        else
+        {
+            qualityPopupCoroutine = null;
+        }
     }
 
     /* Shows a custom message popup in red */
     public void ShowMessagePopup(string message)
     {
-        if(popupText == null) return;
-        StopAllCoroutines();
-        popupText.text = message;
-        popupText.color = new Color(0.9f, 0.1f, 0.1f);
-        popupText.gameObject.SetActive(true);
-        StartCoroutine(FadePopup());
+        if (qualityPopupText == null) return;
+
+        if (qualityPopupCoroutine != null)
+        {
+            StopCoroutine(qualityPopupCoroutine);
+        }
+
+        qualityPopupText.text = message;
+        qualityPopupText.color = new Color(0.9f, 0.1f, 0.1f, 1f);
+        qualityPopupText.gameObject.SetActive(true);
+        qualityPopupCoroutine = StartCoroutine(
+            FadePopup(qualityPopupText, false)
+        );
+    }
+
+    public void UpdateScore(int score)
+    {
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score;
+        }
+    }
+
+    public void ShowUntimedTimer()
+    {
+        if (timerText == null)
+        {
+            return;
+        }
+
+        if (breatheCoroutine != null)
+        {
+            StopCoroutine(breatheCoroutine);
+            breatheCoroutine = null;
+        }
+
+        timerText.color = Color.white;
+        timerText.fontSize = 28f;
+        timerText.text = "Time: --:---";
+        timerText.gameObject.SetActive(true);
     }
 }
