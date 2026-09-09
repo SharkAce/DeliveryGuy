@@ -13,6 +13,22 @@ public class HUDDisplay : MonoBehaviour
 
     private Coroutine breatheCoroutine;
 
+    private void Start()
+    {
+        /* Find deactivated UI children by name*/
+        if(energyDrinkBanner == null)
+        {
+            Transform banner = transform.Find("EnergyDrinkBanner");
+            if(banner != null) energyDrinkBanner = banner.gameObject;
+        }
+
+        if(dialogueHintText == null)
+        {
+            Transform hint = transform.Find("DialogueHint");
+            if(hint != null) dialogueHintText = hint.GetComponent<TMP_Text>();
+        }
+    }
+
     /* Update money display */
     public void UpdateMoney(float amount)
     {
