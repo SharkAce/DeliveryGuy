@@ -47,6 +47,17 @@ public class HUDDisplay : MonoBehaviour
         }
     }
 
+    /* Shows red popup for money spent on energy drinks */
+    public void ShowMoneySpentPopup(float amount)
+    {
+        if(popupText == null) return;
+        StopAllCoroutines();
+        popupText.text = "-$" + amount.ToString("F0");
+        popupText.color = new Color(0.9f, 0.1f, 0.1f);
+        popupText.gameObject.SetActive(true);
+        StartCoroutine(FadePopup());
+    }
+
     /* Update countdown timer, turns red and breathes when at zero */
     public void UpdateTimer(float remaining)
     {

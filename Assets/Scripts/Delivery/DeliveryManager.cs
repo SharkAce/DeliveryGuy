@@ -656,7 +656,7 @@ public class DeliveryManager : MonoBehaviour
         if(hudDisplay != null)
         {
             hudDisplay.UpdateMoney(totalTips);
-            hudDisplay.ShowNegativePopup(amount);
+            hudDisplay.ShowMoneySpentPopup(amount);
             if (CurrentDelivery.HasEnergyDrinkPrompt)
             {
                 StartCoroutine(SlowTimer());
