@@ -54,6 +54,11 @@ public class CarController : MonoBehaviour
         controls = new_controls;
     }
 
+    public CarController.Controls GetControls()
+    {
+        return controls;
+    }
+
     private void FixedUpdate()
     {
         frontLeft.Tick(

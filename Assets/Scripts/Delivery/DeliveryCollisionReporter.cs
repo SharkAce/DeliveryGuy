@@ -4,6 +4,7 @@ public class DeliveryCollisionReporter : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private DeliveryManager deliveryManager;
+    [SerializeField] private CarSoundManager soundManager;
 
     [Header("Collision Detection")]
     [SerializeField] private float minimumImpactSpeed = 1.5f;
@@ -38,6 +39,7 @@ public class DeliveryCollisionReporter : MonoBehaviour
             return;
         }
 
+        soundManager.StartCrashSound();
         deliveryManager.ReportCollision(impactSpeed);
         nextAllowedReportTime = Time.time + reportCooldown;
     }
