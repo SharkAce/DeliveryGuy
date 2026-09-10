@@ -63,6 +63,9 @@ public class DeliveryManager : MonoBehaviour
     [Range(0f, 1f)]
     [SerializeField] private float drivingWeight = 0.3f;
 
+    [Header("Music")]
+    [SerializeField] private SoundtrackManager soundtrackManager;
+
     private int currentDeliveryIndex;
     private DeliveryState currentState;
 
@@ -285,6 +288,11 @@ public class DeliveryManager : MonoBehaviour
             hudDisplay.ShowTimer();
         }
 
+        if (soundtrackManager == null)
+        {
+            soundtrackManager = FindObjectOfType<SoundtrackManager>();
+        }
+
         deliveryResults.Clear();
 
         BeginCurrentDelivery();
@@ -305,7 +313,10 @@ public class DeliveryManager : MonoBehaviour
                     hudDisplay.UpdateTimer(remaining);
                 }
 
-                hudDisplay.UpdateFoodQuality(currentFoodQuality);
+                if (IsCarryingPackage)
+                {
+                    hudDisplay.UpdateFoodQuality(currentFoodQuality);
+                }
             }
         }
     }
@@ -332,6 +343,11 @@ public class DeliveryManager : MonoBehaviour
         deliveryElapsedTime = 0f;
         timerRunning = false;
 
+        if (hudDisplay != null)
+        {
+            hudDisplay.ShowEmptyFoodQuality();
+        }
+
         currentFoodQuality = Mathf.Clamp(
             startingFoodQuality,
             0f,
@@ -343,6 +359,11 @@ public class DeliveryManager : MonoBehaviour
             0f,
             100f
         );
+
+        if (soundtrackManager != null)
+        {
+            soundtrackManager.PlayForDelivery(currentDeliveryIndex + 1);
+        }
 
         if (objectiveArrow != null)
         {
@@ -518,6 +539,11 @@ public class DeliveryManager : MonoBehaviour
     {
         timerRunning = false;
 
+        if (hudDisplay != null)
+        {
+            hudDisplay.ShowEmptyFoodQuality();
+        }
+
         CurrentDelivery.Hide();
 
         bool isFinalDelivery =
@@ -525,6 +551,11 @@ public class DeliveryManager : MonoBehaviour
 
         if (isFinalDelivery && finalArrestSequence != null)
         {
+            if (soundtrackManager != null)
+            {
+                soundtrackManager.PlayPoliceTrack();
+            }
+
             finalArrestSequence.Play(ShowArrivalDialogue);
         }
         else

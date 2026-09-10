@@ -3791,7 +3791,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -14083,6 +14083,108 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &367722591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4491141568485444658, guid: 3b8728bf50a654e4bb737503ff5f526c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6876904963342579334}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &367722596
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367722591}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 79563345e8231fb4593eaa2f5453bfd1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &369199769
 GameObject:
   m_ObjectHideFlags: 0
@@ -14979,6 +15081,7 @@ MonoBehaviour:
   timeWeight: 0.4
   foodQualityWeight: 0.3
   drivingWeight: 0.3
+  soundtrackManager: {fileID: 0}
 --- !u!4 &390628120
 Transform:
   m_ObjectHideFlags: 0
@@ -312177,7 +312280,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -316095,7 +316198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 67.29995, y: -55.099915}
+  m_AnchoredPosition: {x: 1051.6, y: -818}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &821728473
@@ -445731,7 +445834,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 0.6
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -445825,10 +445928,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4caba3467170f847b270077e14970c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playlist:
-  - {fileID: 8300000, guid: afc8f5c6e0e9ac9498e515dbd2c1a604, type: 3}
-  - {fileID: 8300000, guid: cf86e6a7eb6510742be1daa2ed56fedd, type: 3}
+  deliveries1To3: {fileID: 8300000, guid: 44f89b1c5bbb289409f7c650c48495e9, type: 3}
+  deliveries4To6: {fileID: 8300000, guid: afc8f5c6e0e9ac9498e515dbd2c1a604, type: 3}
+  deliveries7To8: {fileID: 8300000, guid: b5b0ece0321f35c4aa0e60c1c9253750, type: 3}
+  policeTrack: {fileID: 8300000, guid: c99cbcf86f87f63499da7b2cbe3c2f2e, type: 3}
   audioSource: {fileID: 1394476932}
+  musicVolume: 0.6
+  fadeDuration: 1.5
 --- !u!4 &1394476934
 Transform:
   m_ObjectHideFlags: 0
@@ -459698,7 +459804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 13.700014, y: -55.099915}
+  m_AnchoredPosition: {x: 998, y: -818}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1769219851
@@ -472350,7 +472456,12 @@ PrefabInstance:
     - target: {fileID: 4417966410999022093, guid: 3b8728bf50a654e4bb737503ff5f526c,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -71.7
+      value: -146
+      objectReference: {fileID: 0}
+    - target: {fileID: 4417966410999022093, guid: 3b8728bf50a654e4bb737503ff5f526c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -43
       objectReference: {fileID: 0}
     - target: {fileID: 4491141568485444658, guid: 3b8728bf50a654e4bb737503ff5f526c,
         type: 3}
@@ -472462,6 +472573,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4491141568485444663, guid: 3b8728bf50a654e4bb737503ff5f526c,
+        type: 3}
+      propertyPath: uiAudioSource
+      value: 
+      objectReference: {fileID: 367722596}
+    - target: {fileID: 4491141568485444663, guid: 3b8728bf50a654e4bb737503ff5f526c,
+        type: 3}
+      propertyPath: buttonClickSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 79563345e8231fb4593eaa2f5453bfd1, type: 3}
+    - target: {fileID: 4491141568485444663, guid: 3b8728bf50a654e4bb737503ff5f526c,
+        type: 3}
+      propertyPath: soundtrackManager
+      value: 
+      objectReference: {fileID: 1394476933}
     - target: {fileID: 4491141569745166743, guid: 3b8728bf50a654e4bb737503ff5f526c,
         type: 3}
       propertyPath: phoneSounds

@@ -351,4 +351,13 @@ public class HUDDisplay : MonoBehaviour
         timerText.text = "Time: --:---";
         timerText.gameObject.SetActive(true);
     }
+
+    public void ShowEmptyFoodQuality()
+    {
+        if (foodQualityText != null)
+        {
+            foodQualityText.gameObject.SetActive(true);
+            foodQualityText.text = "Quality: ---%";
+        }
+    }
 }

@@ -7,6 +7,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject howToPlayPanel;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource uiAudioSource;
+    [SerializeField] private AudioClip buttonClickSound;
+    [SerializeField] private float buttonSoundVolume = 0.7f;
+
     private bool isPaused;
 
     private void Start()
@@ -16,6 +21,11 @@ public class PauseMenu : MonoBehaviour
         pauseOverlay.SetActive(false);
         pausePanel.SetActive(true);
         howToPlayPanel.SetActive(false);
+
+        if (uiAudioSource != null)
+        {
+            uiAudioSource.ignoreListenerPause = true;
+        }
 
         Time.timeScale = 1f;
     }
@@ -42,6 +52,9 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        PlayButtonSound();
+        AudioListener.pause = true;
+
         isPaused = true;
 
         pauseOverlay.SetActive(true);
@@ -53,6 +66,9 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
+        AudioListener.pause = false;
+        PlayButtonSound();
+
         isPaused = false;
 
         pauseOverlay.SetActive(false);
@@ -74,8 +90,21 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(true);
     }
 
+    private void PlayButtonSound()
+    {
+        if (uiAudioSource != null && buttonClickSound != null)
+        {
+            uiAudioSource.PlayOneShot(
+                buttonClickSound,
+                buttonSoundVolume
+            );
+        }
+    }
+
     private void OnDisable()
     {
+        AudioListener.pause = false;
+
         Time.timeScale = 1f;
     }
 }

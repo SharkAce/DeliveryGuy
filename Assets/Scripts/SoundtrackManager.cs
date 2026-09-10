@@ -1,44 +1,104 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
- 
+
 public class SoundtrackManager : MonoBehaviour
 {
-    [SerializeField] private List<AudioClip> playlist;
+    [Header("Music")]
+    [SerializeField] private AudioClip deliveries1To3;
+    [SerializeField] private AudioClip deliveries4To6;
+    [SerializeField] private AudioClip deliveries7To8;
+    [SerializeField] private AudioClip policeTrack;
+
+    [Header("Settings")]
     [SerializeField] private AudioSource audioSource;
- 
-    private int currentTrack = 0;
- 
-    private void Start()
+    [SerializeField] private float musicVolume = 0.6f;
+    [SerializeField] private float fadeDuration = 1.5f;
+
+    private AudioClip currentTrack;
+    private Coroutine fadeCoroutine;
+
+    public void PlayForDelivery(int deliveryNumber)
     {
-        if(playlist.Count > 0)
+        AudioClip nextTrack;
+
+        if (deliveryNumber <= 3)
         {
-            audioSource.clip = playlist[0];
-            audioSource.Play();
+            nextTrack = deliveries1To3;
         }
-    }
- 
-    private void Update()
-    {
-        if(!audioSource.isPlaying && playlist.Count > 0)
+        else if (deliveryNumber <= 6)
         {
-            PlayNextTrack();
+            nextTrack = deliveries4To6;
         }
-    }
- 
-    public void PlayNextTrack()
-    {
-        currentTrack++;
-        if(currentTrack >= playlist.Count)
+        else
         {
-            currentTrack = 0;
+            nextTrack = deliveries7To8;
         }
- 
-        PlayTrack(currentTrack);
+
+        if (nextTrack == null || nextTrack == currentTrack)
+        {
+            return;
+        }
+
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+
+        fadeCoroutine = StartCoroutine(ChangeTrack(nextTrack));
     }
- 
-    public void PlayTrack(int index)
+
+    private IEnumerator ChangeTrack(AudioClip nextTrack)
     {
-        audioSource.clip = playlist[index];
+        if (audioSource.isPlaying)
+        {
+            while (audioSource.volume > 0f)
+            {
+                audioSource.volume -=
+                    musicVolume * Time.deltaTime / fadeDuration;
+
+                yield return null;
+            }
+        }
+
+        currentTrack = nextTrack;
+        audioSource.clip = currentTrack;
+        audioSource.loop = true;
         audioSource.Play();
+
+        while (audioSource.volume < musicVolume)
+        {
+            audioSource.volume +=
+                musicVolume * Time.deltaTime / fadeDuration;
+
+            yield return null;
+        }
+
+        audioSource.volume = musicVolume;
+        fadeCoroutine = null;
+    }
+
+    public void PlayPoliceTrack()
+    {
+        if (policeTrack == null || policeTrack == currentTrack)
+        {
+            return;
+        }
+
+        if (fadeCoroutine != null)
+        {
+            StopCoroutine(fadeCoroutine);
+        }
+
+        fadeCoroutine = StartCoroutine(ChangeTrack(policeTrack));
+    }
+
+    public void PauseMusic()
+    {
+        audioSource.Pause();
+    }
+
+    public void ResumeMusic()
+    {
+        audioSource.UnPause();
     }
 }
