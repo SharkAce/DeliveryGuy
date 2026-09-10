@@ -3467,7 +3467,7 @@ SortingGroup:
   m_GameObject: {fileID: 78790633}
   m_Enabled: 1
   m_SortingLayerID: 440105401
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
 --- !u!4 &78790635
 Transform:
@@ -6916,7 +6916,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2118851161
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -4088431511589742473, guid: 705aaed00a90cec43bd32cc581c281ed,
     type: 3}
@@ -19030,7 +19030,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2118851161
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -4088431511589742473, guid: 705aaed00a90cec43bd32cc581c281ed,
     type: 3}
@@ -321046,7 +321046,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 440105401
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a48a5cdf7ebc9c1428e29f646e92b89e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -322193,7 +322193,7 @@ SortingGroup:
   m_GameObject: {fileID: 943298687}
   m_Enabled: 1
   m_SortingLayerID: 2118851161
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
 --- !u!1 &944108259
 GameObject:
@@ -325306,7 +325306,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -356212947
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 20
   m_Sprite: {fileID: 21300000, guid: 2eacce6623948d44b9c45a79dae6a995, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -325387,7 +325387,7 @@ SortingGroup:
   m_GameObject: {fileID: 1045517616}
   m_Enabled: 1
   m_SortingLayerID: -1918809225
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
 --- !u!1 &1046461032
 GameObject:
@@ -327092,7 +327092,7 @@ SortingGroup:
   m_GameObject: {fileID: 1098322279}
   m_Enabled: 1
   m_SortingLayerID: -356212947
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
 --- !u!1 &1098993775
 GameObject:
@@ -329012,7 +329012,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2118851161
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 056d6e4140ee0e14bbbf021bb77653c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -329435,7 +329435,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -356212947
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -462668,7 +462668,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2118851161
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -4088431511589742473, guid: 705aaed00a90cec43bd32cc581c281ed,
     type: 3}
@@ -472588,6 +472588,39 @@ PrefabInstance:
       propertyPath: soundtrackManager
       value: 
       objectReference: {fileID: 1394476933}
+    - target: {fileID: 4491141568960313670, guid: 3b8728bf50a654e4bb737503ff5f526c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4491141569681261909, guid: 3b8728bf50a654e4bb737503ff5f526c,
+        type: 3}
+      propertyPath: m_text
+      value: 'W / S / Up / Down
+
+        Accelerate and brake/reverse
+
+
+        A
+        / D/ Left/ Right
+
+        Steer
+
+
+        SPACE
+
+        Handbrake
+
+
+        E
+
+        Collect
+        / Drop off packages
+
+
+        Follow the arrow to the collection and drop
+        off points.'
+      objectReference: {fileID: 0}
     - target: {fileID: 4491141569745166743, guid: 3b8728bf50a654e4bb737503ff5f526c,
         type: 3}
       propertyPath: phoneSounds
