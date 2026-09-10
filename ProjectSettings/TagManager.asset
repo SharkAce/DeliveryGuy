@@ -47,6 +47,9 @@ TagManager:
   - name: Ground
     uniqueID: 3369424765
     locked: 0
+  - name: Pedestrians
+    uniqueID: 3267706687
+    locked: 0
   - name: Buildings
     uniqueID: 2376158071
     locked: 0
