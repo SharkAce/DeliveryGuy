@@ -39,6 +39,10 @@ public class DeliveryManager : MonoBehaviour
     [SerializeField]
     private NightOverlayController nightOverlay;
 
+    [Header("Final Arrest")]
+    [SerializeField]
+    private FinalArrestSequence finalArrestSequence;
+
     [Header("Food Quality")]
     [SerializeField] private float startingFoodQuality = 100f;
     [SerializeField] private float penaltyPerImpactSpeed = 2f;
@@ -125,8 +129,14 @@ public class DeliveryManager : MonoBehaviour
     {
         get
         {
-            return phoneUI != null &&
-            phoneUI.IsShowingDialogue;
+            bool phoneDialogueActive =
+                phoneUI != null && phoneUI.IsShowingDialogue;
+
+            bool arrestSequenceActive =
+                finalArrestSequence != null &&
+                finalArrestSequence.IsPlaying;
+
+            return phoneDialogueActive || arrestSequenceActive;
         }
     }
 
@@ -241,6 +251,7 @@ public class DeliveryManager : MonoBehaviour
         if (objectiveArrow == null) objectiveArrow = FindObjectOfType<ObjectiveArrow>();
         if (minimapMarkers == null) minimapMarkers = FindObjectOfType<MinimapDeliveryMarkers>();
         if (nightOverlay == null) nightOverlay = FindObjectOfType<NightOverlayController>();
+        if (finalArrestSequence == null) finalArrestSequence = FindObjectOfType<FinalArrestSequence>();
 
         if (deliveries == null || deliveries.Length == 0)
         {
@@ -509,6 +520,21 @@ public class DeliveryManager : MonoBehaviour
 
         CurrentDelivery.Hide();
 
+        bool isFinalDelivery =
+            currentDeliveryIndex == deliveries.Length - 1;
+
+        if (isFinalDelivery && finalArrestSequence != null)
+        {
+            finalArrestSequence.Play(ShowArrivalDialogue);
+        }
+        else
+        {
+            ShowArrivalDialogue();
+        }
+    }
+
+    private void ShowArrivalDialogue()
+    {
         if (phoneUI != null &&
             CurrentDelivery.ArrivalLines != null &&
             CurrentDelivery.ArrivalLines.Length > 0)
@@ -565,12 +591,27 @@ public class DeliveryManager : MonoBehaviour
 
             if (phoneUI != null)
             {
-                phoneUI.ShowCompleted(
-                    completionTime,
-                    completionQuality,
-                    wasTimed,
-                    totalScore
-                );
+                if (finalArrestSequence != null)
+                {
+                    finalArrestSequence.FadeToBlack(() =>
+                    {
+                        phoneUI.ShowCompleted(
+                            completionTime,
+                            completionQuality,
+                            wasTimed,
+                            totalScore
+                        );
+                    });
+                }
+                else
+                {
+                    phoneUI.ShowCompleted(
+                        completionTime,
+                        completionQuality,
+                        wasTimed,
+                        totalScore
+                    );
+                }
             }
 
             return;

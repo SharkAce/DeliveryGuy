@@ -146,10 +146,10 @@ public class PhoneUI : MonoBehaviour
         }
 
         orderText.text =
-            "DELIVERY FAILED" +
-            "\n\nPACKAGE CONTENTS: HUMAN ORGANS" +
-            "\nDRIVER STATUS: ARRESTED" +
-            "\nEMPLOYER STATUS: UNKNOWN" +
+            "Delivery complete." +
+            "\nUnfortunately, so is our investigation." +
+            "\n\nYour delivery contained: HUMAN ORGANS" +
+            "\nEmployer status: UNKNOWN" +
             "\n\nFinal score: " + totalScore;
     }
 
