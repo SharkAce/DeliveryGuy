@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public enum Direction
@@ -18,11 +17,18 @@ public class NpcHumanController : MonoBehaviour
     [SerializeField] private Direction currentDirection = Direction.Up;
     [SerializeField] private float animationFrameDuration = 0.3f;
     [SerializeField] private float moveSpeed = 2f;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField] private List<Sprite> upWalk;
     [SerializeField] private List<Sprite> leftWalk;
     [SerializeField] private List<Sprite> rightWalk;
     [SerializeField] private List<Sprite> downWalk;
+
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void Init(WaypointController startWp, WaypointController previousWp)
     {
@@ -64,7 +70,7 @@ public class NpcHumanController : MonoBehaviour
 
     void SetDirection()
     {
-        
+
         if (previousWaypoint.transform.position.y == currentWaypoint.transform.position.y)
         {
             currentDirection = previousWaypoint.transform.position.x > currentWaypoint.transform.position.x ? Direction.Left : Direction.Right;
@@ -97,6 +103,6 @@ public class NpcHumanController : MonoBehaviour
         float cycleProgress = (Time.time / animationFrameDuration) % currentAnimation.Count;
         int animationFrame = (int)Mathf.Floor(cycleProgress);
 
-        GetComponent<SpriteRenderer>().sprite = currentAnimation[animationFrame];
+        spriteRenderer.sprite = currentAnimation[animationFrame];
     }
 }

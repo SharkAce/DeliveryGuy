@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class AudioControls : MonoBehaviour
@@ -17,7 +15,7 @@ public class AudioControls : MonoBehaviour
     }
     public void StateToggle()
     {
-        state = state ? false : true;
+        state = !state;
     }
 
     public void AudioToggle()

@@ -91,14 +91,4 @@ public class SoundtrackManager : MonoBehaviour
 
         fadeCoroutine = StartCoroutine(ChangeTrack(policeTrack));
     }
-
-    public void PauseMusic()
-    {
-        audioSource.Pause();
-    }
-
-    public void ResumeMusic()
-    {
-        audioSource.UnPause();
-    }
 }

@@ -27,7 +27,7 @@ public class PhoneUI : MonoBehaviour
     /* Runs every frame, watches for Enter key*/
     private void Update()
     {
-        if(isShowingDialogueSequence && Input.GetKeyDown(KeyCode.Return))
+        if (isShowingDialogueSequence && Input.GetKeyDown(KeyCode.Return))
         {
             AdvanceDialogue();
         }
@@ -51,7 +51,7 @@ public class PhoneUI : MonoBehaviour
 
     public void OnBubbleClick()
     {
-        if(isShowingDialogueSequence)
+        if (isShowingDialogueSequence)
         {
             AdvanceDialogue();
         }
@@ -61,13 +61,13 @@ public class PhoneUI : MonoBehaviour
     public void ShowDialogueSequence(string[] lines, Action onComplete = null, string speaker = "BOSS")
     {
         phoneSounds.PlayOneShot(advanceSound);
-        if(lines == null || lines.Length < 1)
+        if (lines == null || lines.Length < 1)
         {
             onComplete?.Invoke();
             return;
         }
 
-        if(titleText != null)
+        if (titleText != null)
         {
             titleText.text = speaker;
         }
@@ -85,7 +85,7 @@ public class PhoneUI : MonoBehaviour
     {
         phoneSounds.PlayOneShot(advanceSound);
         currentLineIndex++;
-        if(currentLineIndex >= currentLines.Length)
+        if (currentLineIndex >= currentLines.Length)
         {
             isShowingDialogueSequence = false;
             onSequenceComplete?.Invoke();
@@ -100,7 +100,7 @@ public class PhoneUI : MonoBehaviour
         DeliveryRoute route)
     {
         phoneSounds.PlayOneShot(advanceSound);
-        if(titleText != null)
+        if (titleText != null)
         {
             titleText.text = "ORDER";
         }
@@ -109,7 +109,7 @@ public class PhoneUI : MonoBehaviour
             "ORDER " + deliveryNumber + "/" + totalDeliveries +
             "\n\nPICKUP: " + route.PickupName +
             "\nDELIVER TO: " + route.DestinationName +
-            "\nORDER: " + route.OrderName + 
+            "\nORDER: " + route.OrderName +
             "\nDRIVER: Delivery Guy #12";
 
         if (!string.IsNullOrEmpty(route.BossLine))
@@ -125,7 +125,7 @@ public class PhoneUI : MonoBehaviour
         float foodQuality)
     {
         phoneSounds.PlayOneShot(advanceSound);
-        if(titleText != null)
+        if (titleText != null)
         {
             titleText.text = "ORDER";
         }
@@ -147,14 +147,10 @@ public class PhoneUI : MonoBehaviour
         }
     }
 
-    public void ShowCompleted(
-        float deliveryTime,
-        float foodQuality,
-        bool wasTimed,
-        int totalScore)
+    public void ShowCompleted(int totalScore)
     {
         phoneSounds.PlayOneShot(advanceSound);
-        if(titleText != null)
+        if (titleText != null)
         {
             titleText.text = "EVIDENCE";
         }
@@ -170,67 +166,48 @@ public class PhoneUI : MonoBehaviour
     /* Shows buy and skip buttons for the energy drink prompt*/
     public void ShowEnergyDrinkPrompt(float cost, Action onBuy, Action onSkip)
     {
-        if(titleText != null) titleText.text = "BOSS";
+        if (titleText != null) titleText.text = "BOSS";
 
         orderText.text = "Buy an energy drink before next delivery?" +
         "\n\nCost: $" + cost.ToString("F0");
 
-        if(buyButton != null)
-        {
-            buyButton.gameObject.SetActive(true);
-            buyButtonText.text = "[1] BUY";
-            buyButton.onClick.RemoveAllListeners();
-            buyButton.onClick.AddListener(() =>
-            {
-                HideButtons();
-                onBuy?.Invoke();
-            });
-        }
-
-        if(skipButton != null)
-        {
-            skipButton.gameObject.SetActive(true);
-            if(skipButtonText != null) skipButtonText.text = "[2] SKIP";
-            skipButton.onClick.RemoveAllListeners();
-            skipButton.onClick.AddListener(() =>
-            {
-                HideButtons();
-                onSkip?.Invoke();
-            });
-        }
+        SetupButton(buyButton, buyButtonText, "[1] BUY", onBuy);
+        SetupButton(skipButton, skipButtonText, "[2] SKIP", onSkip);
     }
 
     /* Forces buy by making both buttons confirm the purchase*/
     public void ShowEnergyDrinkForced(float cost, Action onBuy)
     {
-        if(titleText != null) titleText.text = "BOSS";
+        if (titleText != null) titleText.text = "BOSS";
 
         orderText.text = "Buy an energy drink before next delivery?" +
         "\n\nCost: $" + cost.ToString("F0");
 
-        if(buyButton != null)
+        SetupButton(buyButton, buyButtonText, "[1] BUY", onBuy);
+        SetupButton(skipButton, skipButtonText, "[2] BUY", onBuy);
+    }
+
+    private void SetupButton(
+        UnityEngine.UI.Button button,
+        TMP_Text buttonText,
+        string buttonLabel,
+        Action action)
+    {
+        if (button == null) return;
+
+        button.gameObject.SetActive(true);
+
+        if (buttonText != null)
         {
-            buyButton.gameObject.SetActive(true);
-            if(buyButtonText != null) buyButtonText.text = "[1] BUY";
-            buyButton.onClick.RemoveAllListeners();
-            buyButton.onClick.AddListener(() =>
-            {
-                HideButtons();
-                onBuy?.Invoke();
-            });
+            buttonText.text = buttonLabel;
         }
 
-        if(skipButton != null)
+        button.onClick.RemoveAllListeners();
+        button.onClick.AddListener(() =>
         {
-            skipButton.gameObject.SetActive(true);
-            if(skipButtonText != null) skipButtonText.text = "[1] BUY";
-            skipButton.onClick.RemoveAllListeners();
-            skipButton.onClick.AddListener(() =>
-            {
-                HideButtons();
-                onBuy?.Invoke();
-            });
-        }
+            HideButtons();
+            action?.Invoke();
+        });
     }
 
     /* Hides both buttons after a choice is made*/

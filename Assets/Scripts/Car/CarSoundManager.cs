@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CarSoundManager : MonoBehaviour
 {
@@ -15,11 +13,11 @@ public class CarSoundManager : MonoBehaviour
     [SerializeField] private float skidFadeSpeed = 10f;
 
     private CarController car;
-    private float currentCarSpeed = 0f;
-    private float targetSkidVolume = 0f;
+    private Rigidbody2D rb;
     void Start()
     {
         car = GetComponent<CarController>();
+        rb = GetComponent<Rigidbody2D>();
         engineAudio.clip = engineSound;
         engineAudio.Play();
 
@@ -31,12 +29,12 @@ public class CarSoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentCarSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
+        float currentCarSpeed = rb.velocity.magnitude;
 
         float carSpeedRate = Mathf.InverseLerp(0f, 40f, currentCarSpeed);
         engineAudio.pitch = Mathf.Lerp(0.85f, 1.3f, carSpeedRate);
 
-        targetSkidVolume = car.GetControls().slideInput ? maxSkidVolume : 0;
+        float targetSkidVolume = car.GetControls().slideInput ? maxSkidVolume : 0f;
 
         skidAudio.volume = Mathf.Lerp(skidAudio.volume, targetSkidVolume, skidFadeSpeed * Time.deltaTime);
     }

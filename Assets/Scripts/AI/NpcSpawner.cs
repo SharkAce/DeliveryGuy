@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class NpcSpawner : MonoBehaviour
@@ -17,7 +16,7 @@ public class NpcSpawner : MonoBehaviour
             GameObject HumanType = HumanTypes[Random.Range(0, HumanTypes.Count)];
             WaypointController previousWp = walkingIntersections.transform.GetChild(Random.Range(0, walkingIntersections.transform.childCount))
                 .GetComponent<WaypointController>();
-            
+
             WaypointController startWp = previousWp.nextWaypoints[Random.Range(0, previousWp.nextWaypoints.Count)];
 
             GameObject newNpc = Instantiate(HumanType, transform);
@@ -29,7 +28,7 @@ public class NpcSpawner : MonoBehaviour
             GameObject CarType = CarTypes[Random.Range(0, CarTypes.Count)];
             WaypointController previousWp = drivingIntersections.transform.GetChild(Random.Range(0, drivingIntersections.transform.childCount))
                 .GetComponent<WaypointController>();
-            
+
             WaypointController startWp = previousWp.nextWaypoints[Random.Range(0, previousWp.nextWaypoints.Count)];
 
             GameObject newNpc = Instantiate(CarType, transform);

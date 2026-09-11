@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-        public struct Controls
+    public struct Controls
     {
         public float driveInput;
         public float brakeInput;
@@ -21,13 +21,7 @@ public class CarController : MonoBehaviour
     public float maxSteerAngle = 35f;
     public float steerSpeed = 5f;
 
-
     private Rigidbody2D rb;
-    private float driveInput;
-    private float brakeInput;
-    private float steerInput;
-
-    private bool slideInput;
     private float steerAngle;
 
     private void Start()

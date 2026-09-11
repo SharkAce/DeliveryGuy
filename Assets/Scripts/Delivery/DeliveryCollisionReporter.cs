@@ -39,7 +39,11 @@ public class DeliveryCollisionReporter : MonoBehaviour
             return;
         }
 
-        soundManager.StartCrashSound();
+        if (soundManager != null)
+        {
+            soundManager.StartCrashSound();
+        }
+
         deliveryManager.ReportCollision(impactSpeed);
         nextAllowedReportTime = Time.time + reportCooldown;
     }

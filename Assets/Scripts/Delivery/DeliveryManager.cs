@@ -1,15 +1,5 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
-
-public enum DrivingRating
-{
-    Horrible,
-    Bad,
-    Average,
-    Good,
-    Excellent
-}
 
 public class DeliveryManager : MonoBehaviour
 {
@@ -80,51 +70,11 @@ public class DeliveryManager : MonoBehaviour
     private float totalTips;
     private float timerScale = 1f;
 
-    private readonly List<DeliveryResult> deliveryResults =
-        new List<DeliveryResult>();
-
-    public int CurrentDeliveryNumber
-    {
-        get
-        {
-            if (deliveries == null || deliveries.Length == 0)
-            {
-                return 0;
-            }
-
-            return Mathf.Min(
-                currentDeliveryIndex + 1,
-                deliveries.Length
-            );
-        }
-    }
-
-    public int CompletedDeliveries
-    {
-        get { return currentDeliveryIndex; }
-    }
-
-    public int TotalDeliveries
-    {
-        get
-        {
-            return deliveries == null ? 0 : deliveries.Length;
-        }
-    }
-
-    public bool IsCarryingPackage
+    private bool IsCarryingPackage
     {
         get
         {
             return currentState == DeliveryState.CarryingPackage;
-        }
-    }
-
-    public bool AllDeliveriesCompleted
-    {
-        get
-        {
-            return currentState == DeliveryState.Completed;
         }
     }
 
@@ -140,104 +90,6 @@ public class DeliveryManager : MonoBehaviour
                 finalArrestSequence.IsPlaying;
 
             return phoneDialogueActive || arrestSequenceActive;
-        }
-    }
-
-    public float DeliveryElapsedTime
-    {
-        get { return deliveryElapsedTime; }
-    }
-
-    public float TargetDeliveryTime
-    {
-        get
-        {
-            if (AllDeliveriesCompleted || deliveries == null)
-            {
-                return 0f;
-            }
-
-            return CurrentDelivery.TargetDeliveryTime;
-        }
-    }
-
-    public float RemainingDeliveryTime
-    {
-        get
-        {
-            return Mathf.Max(
-                0f,
-                TargetDeliveryTime - deliveryElapsedTime
-            );
-        }
-    }
-
-    public bool IsTimerRunning
-    {
-        get { return timerRunning; }
-    }
-
-    public float CurrentFoodQuality
-    {
-        get { return currentFoodQuality; }
-    }
-
-    public float CurrentDrivingScore
-    {
-        get { return currentDrivingScore; }
-    }
-
-    public float LastDeliveryTip
-    {
-        get { return lastDeliveryTip; }
-    }
-
-    public int LastDeliveryScore
-    {
-        get { return lastDeliveryScore; }
-    }
-
-    public int TotalScore
-    {
-        get { return totalScore; }
-    }
-
-    /* Running total of tips earned across all deliveries */
-    public float TotalTips
-    {
-        get { return totalTips; }
-    }
-
-    public DeliveryResult[] DeliveryResults
-    {
-        get { return deliveryResults.ToArray(); }
-    }
-
-    public DrivingRating CurrentDrivingRating
-    {
-        get
-        {
-            if (currentDrivingScore >= 90f)
-            {
-                return DrivingRating.Excellent;
-            }
-
-            if (currentDrivingScore >= 75f)
-            {
-                return DrivingRating.Good;
-            }
-
-            if (currentDrivingScore >= 50f)
-            {
-                return DrivingRating.Average;
-            }
-
-            if (currentDrivingScore >= 25f)
-            {
-                return DrivingRating.Bad;
-            }
-
-            return DrivingRating.Horrible;
         }
     }
 
@@ -292,8 +144,6 @@ public class DeliveryManager : MonoBehaviour
         {
             soundtrackManager = FindObjectOfType<SoundtrackManager>();
         }
-
-        deliveryResults.Clear();
 
         BeginCurrentDelivery();
     }
@@ -370,21 +220,7 @@ public class DeliveryManager : MonoBehaviour
             objectiveArrow.ClearTarget();
         }
 
-        if (hudDisplay != null)
-        {
-            hudDisplay.ShowTimer();
-
-            if (CurrentDelivery.IsTimedDelivery)
-            {
-                hudDisplay.UpdateTimer(
-                    CurrentDelivery.TargetDeliveryTime
-                );
-            }
-            else
-            {
-                hudDisplay.ShowUntimedTimer();
-            }
-        }
+        UpdateTimerDisplay();
 
         if (phoneUI != null &&
             CurrentDelivery.DialogueLines != null &&
@@ -401,6 +237,25 @@ public class DeliveryManager : MonoBehaviour
         }
     }
 
+    private void UpdateTimerDisplay()
+    {
+        if (hudDisplay == null)
+        {
+            return;
+        }
+
+        hudDisplay.ShowTimer();
+
+        if (CurrentDelivery.IsTimedDelivery)
+        {
+            hudDisplay.UpdateTimer(CurrentDelivery.TargetDeliveryTime);
+        }
+        else
+        {
+            hudDisplay.ShowUntimedTimer();
+        }
+    }
+
     /* Runs after pre-delivery dialogue, with the drink action in delivery 6*/
     private void OnDialogueComplete()
     {
@@ -410,49 +265,46 @@ public class DeliveryManager : MonoBehaviour
 
             phoneUI.ShowEnergyDrinkPrompt(
                 cost,
-                onBuy: () =>
-                {
-                    SpendTips(cost);
-                    ProceedToPickup();
-                },
-                onSkip: () =>
-                {
-                    if (CurrentDelivery.SkipDialogueLines != null &&
-                    CurrentDelivery.SkipDialogueLines.Length > 0)
-                    {
-                        phoneUI.ShowDialogueSequence(
-                            CurrentDelivery.SkipDialogueLines,
-                            () =>
-                            {
-                                float forcedCost = totalTips * 0.51f;
-                                phoneUI.ShowEnergyDrinkForced(
-                                    forcedCost,
-                                    onBuy: () =>
-                                    {
-                                        SpendTips(forcedCost);
-                                        ProceedToPickup();
-                                    }
-                                );
-                            }
-                        );
-                    }
-                    else
-                    {
-                        float forcedCost = totalTips * 0.51f;
-                        phoneUI.ShowEnergyDrinkForced(
-                            forcedCost,
-                            onBuy: () =>
-                            {
-                                SpendTips(forcedCost);
-                                ProceedToPickup();
-                            }
-                        );
-                    }
-                }
+                onBuy: () => BuyEnergyDrink(cost),
+                onSkip: HandleEnergyDrinkSkip
             );
+
             return;
         }
+
         ProceedToPickup();
+    }
+
+    private void BuyEnergyDrink(float cost)
+    {
+        SpendTips(cost);
+        ProceedToPickup();
+    }
+
+    private void HandleEnergyDrinkSkip()
+    {
+        if (CurrentDelivery.SkipDialogueLines != null &&
+            CurrentDelivery.SkipDialogueLines.Length > 0)
+        {
+            phoneUI.ShowDialogueSequence(
+                CurrentDelivery.SkipDialogueLines,
+                ShowForcedEnergyDrink
+            );
+        }
+        else
+        {
+            ShowForcedEnergyDrink();
+        }
+    }
+
+    private void ShowForcedEnergyDrink()
+    {
+        float forcedCost = totalTips * 0.51f;
+
+        phoneUI.ShowEnergyDrinkForced(
+            forcedCost,
+            onBuy: () => BuyEnergyDrink(forcedCost)
+        );
     }
 
     /* Shows pickup UI and sets arrow target*/
@@ -464,21 +316,7 @@ public class DeliveryManager : MonoBehaviour
         timerScale = 1f;
         timerRunning = true;
 
-        if (hudDisplay != null)
-        {
-            hudDisplay.ShowTimer();
-
-            if (CurrentDelivery.IsTimedDelivery)
-            {
-                hudDisplay.UpdateTimer(
-                    CurrentDelivery.TargetDeliveryTime
-                );
-            }
-            else
-            {
-                hudDisplay.ShowUntimedTimer();
-            }
-        }
+        UpdateTimerDisplay();
 
         if (minimapMarkers != null)
         {
@@ -584,10 +422,6 @@ public class DeliveryManager : MonoBehaviour
 
     private void OnArrivalDialogueComplete()
     {
-        float completionTime = deliveryElapsedTime;
-        float completionQuality = currentFoodQuality;
-        bool wasTimed = CurrentDelivery.IsTimedDelivery;
-
         CalculateDeliveryRewards();
         if (hudDisplay != null)
         {
@@ -595,7 +429,6 @@ public class DeliveryManager : MonoBehaviour
             hudDisplay.UpdateScore(totalScore);
             hudDisplay.ShowPositivePopup(lastDeliveryTip);
         }
-        StoreDeliveryResult();
         currentDeliveryIndex++;
 
         if (nightOverlay != null)
@@ -626,22 +459,12 @@ public class DeliveryManager : MonoBehaviour
                 {
                     finalArrestSequence.FadeToBlack(() =>
                     {
-                        phoneUI.ShowCompleted(
-                            completionTime,
-                            completionQuality,
-                            wasTimed,
-                            totalScore
-                        );
+                        phoneUI.ShowCompleted(totalScore);
                     });
                 }
                 else
                 {
-                    phoneUI.ShowCompleted(
-                        completionTime,
-                        completionQuality,
-                        wasTimed,
-                        totalScore
-                    );
+                    phoneUI.ShowCompleted(totalScore);
                 }
             }
 
@@ -649,27 +472,6 @@ public class DeliveryManager : MonoBehaviour
         }
 
         BeginCurrentDelivery();
-    }
-
-    private void StoreDeliveryResult()
-    {
-        float targetTime = CurrentDelivery.IsTimedDelivery
-            ? CurrentDelivery.TargetDeliveryTime
-            : 0f;
-
-        DeliveryResult result = new DeliveryResult(
-            CurrentDeliveryNumber,
-            deliveryElapsedTime,
-            targetTime,
-            currentFoodQuality,
-            currentDrivingScore,
-            CurrentDrivingRating,
-            lastDeliveryTip,
-            lastDeliveryScore,
-            totalScore
-        );
-
-        deliveryResults.Add(result);
     }
 
     private void CalculateDeliveryRewards()
@@ -772,25 +574,21 @@ public class DeliveryManager : MonoBehaviour
         );
     }
 
-    /* Deducts purchase cost from tip total, update HUD*/
-    public void SpendTips(float amount)
+    /* Deducts purchase cost from tip total and updates HUD */
+    private void SpendTips(float amount)
     {
-        totalTips = Mathf.Max(0, totalTips - amount);
+        totalTips = Mathf.Max(0f, totalTips - amount);
+
         if (hudDisplay != null)
         {
             hudDisplay.UpdateMoney(totalTips);
             hudDisplay.ShowMoneySpentPopup(amount);
-            if (CurrentDelivery.HasEnergyDrinkPrompt)
-            {
-                StartCoroutine(SlowTimer());
-            }
         }
-    }
 
-    /* Sets timer speed (for energy drink slowdown)*/
-    public void SetTimerScale(float scale)
-    {
-        timerScale = scale;
+        if (CurrentDelivery.HasEnergyDrinkPrompt)
+        {
+            StartCoroutine(SlowTimer());
+        }
     }
 
     /*Wait 5 seconds, then slow down timer for energy drink effect*/
@@ -801,6 +599,6 @@ public class DeliveryManager : MonoBehaviour
         {
             hudDisplay.ShowEnergyDrinkBanner();
         }
-        SetTimerScale(0.05f);
+        timerScale = 0.05f;
     }
 }

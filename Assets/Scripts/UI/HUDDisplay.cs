@@ -123,20 +123,6 @@ public class HUDDisplay : MonoBehaviour
         }
     }
 
-    /* Hides timer between deliveries */
-    public void HideTimer()
-    {
-        if (timerText != null)
-        {
-            if (breatheCoroutine != null)
-            {
-                StopCoroutine(breatheCoroutine);
-                breatheCoroutine = null;
-            }
-            timerText.gameObject.SetActive(false);
-        }
-    }
-
     /* Shows timer when delivery begins */
     public void ShowTimer()
     {
@@ -239,23 +225,6 @@ public class HUDDisplay : MonoBehaviour
         dialogueHintCoroutine = StartCoroutine(FadeDialogueHint());
     }
 
-    public void HideDialogueHint()
-    {
-        if (dialogueHintCoroutine != null)
-        {
-            StopCoroutine(dialogueHintCoroutine);
-            dialogueHintCoroutine = null;
-        }
-
-        if (dialogueHintText != null)
-        {
-            Color color = dialogueHintText.color;
-            color.a = 1f;
-            dialogueHintText.color = color;
-            dialogueHintText.gameObject.SetActive(false);
-        }
-    }
-
     private IEnumerator FadeDialogueHint()
     {
         yield return new WaitForSecondsRealtime(1f);
@@ -305,24 +274,6 @@ public class HUDDisplay : MonoBehaviour
         {
             qualityPopupCoroutine = null;
         }
-    }
-
-    /* Shows a custom message popup in red */
-    public void ShowMessagePopup(string message)
-    {
-        if (qualityPopupText == null) return;
-
-        if (qualityPopupCoroutine != null)
-        {
-            StopCoroutine(qualityPopupCoroutine);
-        }
-
-        qualityPopupText.text = message;
-        qualityPopupText.color = new Color(0.9f, 0.1f, 0.1f, 1f);
-        qualityPopupText.gameObject.SetActive(true);
-        qualityPopupCoroutine = StartCoroutine(
-            FadePopup(qualityPopupText, false)
-        );
     }
 
     public void UpdateScore(int score)

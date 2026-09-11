@@ -85,6 +85,12 @@ public class MinimapDeliveryMarkers : MonoBehaviour
 
     private bool IsValidIndex(int index)
     {
+        if (deliveryMarkers == null)
+        {
+            Debug.LogError("No minimap markers have been configured.");
+            return false;
+        }
+
         if (index < 0 || index >= deliveryMarkers.Length)
         {
             Debug.LogError(

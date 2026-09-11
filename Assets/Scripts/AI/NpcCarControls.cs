@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NpcCarControls : MonoBehaviour
 {
@@ -8,19 +6,20 @@ public class NpcCarControls : MonoBehaviour
     [SerializeField] private WaypointController currentWaypoint = null;
     [SerializeField] private float waypointTriggerDist = 1f;
     [SerializeField] private float detectionDistance = 5f;
-    private float currentSpeed = 0;
     private CarController.Controls controls;
     private CarController car;
+    private Rigidbody2D rb;
     private float collisionRayOffset;
     [SerializeField] private float collisionRaySpeedFactor = 0.5f;
 
     void Start()
     {
         car = GetComponent<CarController>();
+        rb = GetComponent<Rigidbody2D>();
 
         BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         collisionRayOffset = boxCollider.size.y / 2;
-        
+
         controls.driveInput = 0f;
         controls.brakeInput = 0f;
         controls.steerInput = 0f;
@@ -29,9 +28,8 @@ public class NpcCarControls : MonoBehaviour
 
     void Update()
     {
-        currentSpeed = GetComponent<Rigidbody2D>().velocity.magnitude;
         ApplyControls();
-        
+
         if (Vector3.Distance(currentWaypoint.transform.position, transform.position) < waypointTriggerDist)
         {
             SelectNextWaypoint();
@@ -50,6 +48,7 @@ public class NpcCarControls : MonoBehaviour
     }
     void ApplyControls()
     {
+        float currentSpeed = rb.velocity.magnitude;
         Vector3 directionToWaypoint = (currentWaypoint.transform.position - transform.position).normalized;
         float dot = Vector2.Dot(transform.up, directionToWaypoint);
         float cross = Vector3.Cross(transform.up, directionToWaypoint).z;
