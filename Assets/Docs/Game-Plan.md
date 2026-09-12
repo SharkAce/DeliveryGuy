@@ -1,4 +1,4 @@
-# Delivery Guy #12 — Gameplay and Dialogues
+# Delivery Guy #12 - Gameplay and Dialogues
 
 ## Notes
 
@@ -182,7 +182,7 @@ DRIVER: Delivery Guy #12
 ```
 
 - Arrival to drop-off.
-- Jonnas — extremely tall and thin character.
+- Jonnas - extremely tall and thin character.
 - Looks normal, but his body shape is slenderman-like.
 
 **Jonnas dialogue:**
@@ -322,7 +322,7 @@ DRIVER: Delivery Guy #12
 - Call cuts off mid-sentence.
 - Stressful atmosphere.
 - Arrow leading to Aorta's Kitchen.
-- Order pickup as normal — order label reads simply: **"HEART"**.
+- Order pickup as normal - order label reads simply: **"HEART"**.
 - As player drives toward the address, sirens are heard, and getting louder.
 - Player loses control, car stops, police cars come from behind and surround the player.
 
@@ -333,7 +333,7 @@ DRIVER: Delivery Guy #12
 
 **What happens:**
 
-- Screen briefly shows the delivery contents — some kind of meat, medical packaging, label with a name.
+- Screen briefly shows the delivery contents - some kind of meat, medical packaging, label with a name.
 - Cut to black.
 
 **Text on screen:**

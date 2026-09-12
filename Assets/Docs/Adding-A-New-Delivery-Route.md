@@ -1,7 +1,5 @@
 # Adding a New Delivery Route
 
-Follow these steps whenever you add a delivery.
-
 ## 1. Add the route
 
 1. Find the `DeliveryRoute` prefab in the Project window.
@@ -49,9 +47,9 @@ The point fields may already be filled in by the prefab, but check that they use
 For example:
 
 ```text
-Element 0 → DeliveryRoute01
-Element 1 → DeliveryRoute02
-Element 2 → DeliveryRoute03
+Element 0 -> DeliveryRoute01
+Element 1 -> DeliveryRoute02
+Element 2 -> DeliveryRoute03
 ```
 
 This list controls the order of the deliveries. Check that Unity has not copied the previous route into the new slot.
@@ -68,8 +66,8 @@ Under `MinimapMarkers/DeliveryMarkers`:
 Select each new marker and set its `MinimapMarkerFollower` target:
 
 ```text
-PickupMarker03  → DeliveryRoute03/PickUpPoint
-DropOffMarker03 → DeliveryRoute03/DropOffPoint
+PickupMarker03  -> DeliveryRoute03/PickUpPoint
+DropOffMarker03 -> DeliveryRoute03/DropOffPoint
 ```
 
 Keep the markers separate from the delivery route. Their settings should be:
@@ -94,15 +92,11 @@ For example:
 
 ```text
 Element 2
-├── Pickup Marker   → PickupMarker03
-└── Drop Off Marker → DropOffMarker03
+├── Pickup Marker   -> PickupMarker03
+└── Drop Off Marker -> DropOffMarker03
 ```
 
 The element number must match the route's element number in `DeliveryManager`.
-
-## 7. Do I need to change any code?
-
-No. A normal new delivery does not require any code changes.
 
 ### Phone text
 
